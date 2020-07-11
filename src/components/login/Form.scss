@@ -1,0 +1,79 @@
+@import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
+
+.form {
+  @include primaryShadow;
+  color: $primaryTextColor;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 5vw;
+  width: 90vw;
+  top: 15vh;
+  padding: 4vh 5vw;
+  margin-bottom: 10vh;
+  .form__registrationErrorHandler {
+    @include errorText;
+  }
+  .form__registrationSuccessHandler {
+    @include errorText;
+    color: $formSuccessText;
+  }
+  .form__header {
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+  .form__input {
+    margin: 1vh 0 2vh;
+    padding: 7px 5px;
+    border: 2px solid $primaryTextColor;
+    border-radius: 4px;
+  }
+  // for registration
+  .form__errorHandler {
+    @include errorText;
+  }
+  .form__button {
+    @include button;
+    padding: 8px;
+    margin-top: 3vh;
+    width: 40%;
+    align-self: flex-end;
+    background-color: $primaryColor;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) and (orientation: landscape) {
+  .form {
+    right: 20vw;
+    width: 50vw;
+    top: 20vh;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (orientation: landscape) {
+  .form {
+    top: 20vh;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1366px) and (orientation: landscape) {
+  .form {
+    right: 30vw;
+    width: 40vw;
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
+  .form {
+    right: 35vw;
+    width: 30vw;
+  }
+}
+
+@media only screen and (min-width: 1921px) and (orientation: landscape) {
+  .form {
+    right: 38vw;
+    width: 24vw;
+  }
+}

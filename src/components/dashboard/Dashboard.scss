@@ -1,0 +1,41 @@
+@import '../../shared/mixins.scss';
+@import '../../shared/variables.scss';
+
+.dashboard {
+  width: 100vw;
+  padding: 2vh 5vw;
+  .dashboard__header {
+    font-size: 1.5rem;
+    margin: 18vh 0 0 4%;
+  }
+  .dashboard__notices {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 2vw;
+  }
+}
+
+@media only screen and (min-width: 600px) and (orientation: landscape) {
+  .dashboard {
+    .dashboard__notices {
+      flex-direction: row;
+    }
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
+  .dashboard {
+    .dashboard__header {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1921px) and (orientation: landscape) {
+  .dashboard {
+    .dashboard__header {
+      font-size: 2rem;
+    }
+  }
+}

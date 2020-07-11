@@ -1,0 +1,15 @@
+@import '../../shared/mixins.scss';
+@import '../../shared/variables.scss';
+
+.header__logout {
+  @include button;
+  background-color: $primaryColor;
+  font-size: 16px;
+  margin-right: 5vw;
+}
+
+@media only screen and (min-width: 1367px) and (orientation: landscape) {
+  .header__logout {
+    font-size: 1.25rem;
+  }
+}

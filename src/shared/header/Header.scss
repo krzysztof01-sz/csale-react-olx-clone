@@ -1,0 +1,37 @@
+@import '../../shared/mixins.scss';
+@import '../../shared/variables.scss';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  border-bottom: 2px solid lighten($primaryTextColor, 70);
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  .header__appName {
+    margin: 2vh 0 2vh 5vw;
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
+  .header {
+    .header__appName {
+      font-size: 35px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1921px) and (orientation: landscape) {
+  .header {
+    .header__appName {
+      font-size: 40px;
+    }
+  }
+}

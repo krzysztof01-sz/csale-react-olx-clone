@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+@mixin primaryShadow {
+  -webkit-box-shadow: 0px 3px 10px -5px #000000;
+  box-shadow: 0px 3px 10px -5px #000000;
+}
+
+@mixin noticeShadow {
+  -webkit-box-shadow: 0px 4px 8px -5px #000000;
+  box-shadow: 0px 4px 8px -5px #000000;
+}
+
+@mixin button {
+  width: 100px;
+  background-color: lightgray;
+  padding: 10px;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+}
+
+@mixin errorText {
+  margin-bottom: 2vh;
+  color: $formErrorText;
+  font-weight: bold;
+  text-align: center;
+}

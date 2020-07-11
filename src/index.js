@@ -9,27 +9,22 @@ import 'firebase/firestore';
 import firebaseConfig from './config/firebase-config';
 
 import { Provider } from 'react-redux';
-import { createStore, combineReducers, compose } from 'redux';
-import { firebaseReducer, ReactReduxFirebaseProvider } from 'react-redux-firebase';
-import { reduxFirestore, createFirestoreInstance, firestoreReducer } from 'redux-firestore';
+import { createStore, compose } from 'redux';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { reduxFirestore, createFirestoreInstance } from 'redux-firestore';
+import rootReducer from './redux/rootReducer';
 
 import App from './App';
-import './index.scss';
 import * as serviceWorker from './serviceWorker';
 
 firebase.initializeApp(firebaseConfig);
 
-const rootReducer = combineReducers({
-  firebase: firebaseReducer,
-  firestore: firestoreReducer,
-});
-
 const createStoreWithFirebase = compose(reduxFirestore(firebase))(createStore);
-
 const store = createStoreWithFirebase(rootReducer, {});
 
 const rrfConfig = {
   userProfile: 'users',
+  useFirestoreForProfile: true,
 };
 
 const rrfProps = {
