@@ -2,41 +2,11 @@ import React from 'react';
 import Header from '../../shared/header/Header';
 import '../login/Form.scss';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const Registration = () => {
-  const history = useHistory();
-  const errorElement = document.querySelector('span.form__registrationErrorHandler');
-  const successElement = document.querySelector('span.form__registrationSuccessHandler');
-
-  const addUserToDb = async (userId, nick) => {
-    return await firebase.firestore().collection('users').doc(userId).set({
-      nick,
-    });
-  };
-
-  const handleFormSubmit = () => {
-    const { email, password, nick } = formik.values;
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(({ user }) => {
-        addUserToDb(user.uid, nick);
-      })
-      .then(() => {
-        errorElement.innerText = '';
-        successElement.innerText = 'Registration succeed';
-        setTimeout(() => history.push('/'), 800);
-      })
-      .catch(err => {
-        const { message } = err;
-        errorElement.innerText = message;
-      });
-  };
-
   const formik = useFormik({
     initialValues: {
       nick: '',
@@ -44,7 +14,7 @@ const Registration = () => {
       password: '',
       repeatedPassword: '',
     },
-    onSubmit: handleFormSubmit,
+    // onSubmit: handleFormSubmit,
     validationSchema: Yup.object({
       nick: Yup.string()
         .min(3, 'Nick is too short.')

@@ -1,71 +1,64 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Form.scss';
 import Header from '../../shared/header/Header';
 // import firebase from 'firebase/app';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import 'firebase/auth';
-import { login } from '../../redux/actionCreators/authActionCreators';
-import { connect } from 'react-redux';
 
-const Login = ({ login, loginFeedback, loginSuccess }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const history = useHistory();
-  // const errorElement = document.querySelector('span.form__registrationErrorHandler');
-  // const successElement = document.querySelector('span.form__registrationSuccessHandler');
-
-  // const validationElements = () => {
-  //   if (success) {
-  //     return <span className="form__registrationErrorHandler">{loginFeedback}</span>;
-  //   } else {
-  //     return <span className="form__registrationSuccessHandler">{loginFeedback}</span>;
-  //   }
-  // };
-
-  if (loginSuccess) setTimeout(() => history.push('/dashboard'), 900);
-
-  const validationElements = loginSuccess ? (
-    <span className="form__registrationSuccessHandler">{loginFeedback}</span>
-  ) : (
-    <span className="form__registrationErrorHandler">{loginFeedback}</span>
-  );
+const Login = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    // onSubmit: handleFormSubmit,
+    validationSchema: Yup.object({
+      email: Yup.string().email('Invalid e-mail.').required('This field is required.'),
+      password: Yup.string().required('This field is required.'),
+    }),
+  });
 
   return (
     <>
       <Header />
       <main>
-        <form className="form">
+        <form className="form" onSubmit={formik.handleSubmit}>
           <h1 className="form__header">Logging</h1>
 
-          {validationElements}
+          <span className="form__registrationSuccessHandler"></span>
+          <span className="form__registrationErrorHandler"></span>
 
           <label htmlFor="email">E-mail</label>
           <input
-            onChange={({ target }) => setEmail(target.value)}
             className="form__input"
             type="email"
             name="email"
-            value={email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.nick}
           />
+
+          {formik.touched.email && formik.errors.email ? (
+            <div className="form__errorHandler">{formik.errors.email}</div>
+          ) : null}
 
           <label htmlFor="password">Password</label>
           <input
-            onChange={({ target }) => setPassword(target.value)}
             className="form__input"
             type="password"
             name="password"
-            value={password}
-            required
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.nick}
           />
 
-          <button
-            onClick={e => {
-              e.preventDefault();
-              login(email, password);
-            }}
-            className="form__button"
-            type="submit">
+          {formik.touched.password && formik.errors.password ? (
+            <div className="form__errorHandler">{formik.errors.password}</div>
+          ) : null}
+
+          <button className="form__button" type="submit">
             Login
           </button>
         </form>
@@ -74,17 +67,4 @@ const Login = ({ login, loginFeedback, loginSuccess }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    loginFeedback: state.loginAuth.message,
-    loginSuccess: state.loginAuth.success,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    login: (email, password) => dispatch(login(email, password)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
