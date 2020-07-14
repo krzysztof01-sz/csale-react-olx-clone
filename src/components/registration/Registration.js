@@ -13,7 +13,7 @@ const Registration = () => {
   const successElement = document.querySelector('span.form__registrationSuccessHandler');
 
   const addUserToDb = async (userId, nick) => {
-    await firebase.firestore().collection('users').doc(userId).set({
+    return await firebase.firestore().collection('users').doc(userId).set({
       nick,
     });
   };
@@ -25,6 +25,8 @@ const Registration = () => {
       .createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         addUserToDb(user.uid, nick);
+      })
+      .then(() => {
         errorElement.innerText = '';
         successElement.innerText = 'Registration succeed';
         setTimeout(() => history.push('/'), 800);
@@ -42,7 +44,7 @@ const Registration = () => {
       password: '',
       repeatedPassword: '',
     },
-    onSubmit: () => handleFormSubmit(),
+    onSubmit: handleFormSubmit,
     validationSchema: Yup.object({
       nick: Yup.string()
         .min(3, 'Nick is too short.')
@@ -64,8 +66,9 @@ const Registration = () => {
       <main>
         <form className="form" onSubmit={formik.handleSubmit}>
           <h1 className="form__header">Registration</h1>
-          <span className="form__registrationErrorHandler"></span>
+
           <span className="form__registrationSuccessHandler"></span>
+          <span className="form__registrationErrorHandler"></span>
 
           <label htmlFor="nick">Nick</label>
           <input

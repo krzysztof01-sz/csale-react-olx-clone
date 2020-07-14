@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 
 const Header = props => {
   const isLogged = Boolean(props.userProfile.nick);
+  console.log(isLogged);
+
   if (isLogged) {
     return (
       <header className="header">
@@ -30,6 +32,7 @@ const Header = props => {
 };
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     userProfile: state.firebase.profile,
   };
