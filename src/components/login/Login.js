@@ -1,19 +1,27 @@
 import React from 'react';
 import './Form.scss';
 import Header from '../../shared/header/Header';
-// import firebase from 'firebase/app';
+import firebase from 'firebase/app';
 // import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import 'firebase/auth';
 
 const Login = () => {
+  const handleFormSubmit = credencials => {
+    console.log(credencials);
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(formik.values.email, formik.values.password)
+      .then(data => console.log(data));
+  };
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-    // onSubmit: handleFormSubmit,
+    onSubmit: values => handleFormSubmit(values),
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid e-mail.').required('This field is required.'),
       password: Yup.string().required('This field is required.'),
