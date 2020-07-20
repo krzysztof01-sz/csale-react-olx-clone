@@ -14,14 +14,28 @@
   align-items: center;
   width: 100vw;
   height: 10vh;
+  .header__options-wrapper {
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
   .header__appName {
     margin: 2vh 0 2vh 5vw;
-    font-size: 30px;
+    font-size: 28px;
   }
 }
 
-@media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
+@media only screen and (min-width: 1000px) and (max-width: 1920px) and (orientation: landscape) {
   .header {
+    .header__options-wrapper {
+      width: 20vw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
     .header__appName {
       font-size: 35px;
     }
@@ -30,6 +44,9 @@
 
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
   .header {
+    .header__options-wrapper {
+      width: 20vw;
+    }
     .header__appName {
       font-size: 40px;
     }

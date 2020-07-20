@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from '../../shared/header/Header';
-import '../login/Form.scss';
+import '../../shared/Form.scss';
 import * as Yup from 'yup';
-// import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import 'firebase/auth';
+import { connect } from 'react-redux';
+import { signUp } from '../../redux/authFunctions';
 
-const Registration = () => {
+const Registration = ({ signUp }) => {
   const formik = useFormik({
     initialValues: {
       nick: '',
@@ -14,16 +15,11 @@ const Registration = () => {
       password: '',
       repeatedPassword: '',
     },
-    // onSubmit: handleFormSubmit,
+    onSubmit: values => signUp(values),
     validationSchema: Yup.object({
-      nick: Yup.string()
-        .min(3, 'Nick is too short.')
-        .max(15, 'Nick is too long.')
-        .required('This field is required.'),
+      nick: Yup.string().min(3, 'Nick is too short.').max(15, 'Nick is too long.').required('This field is required.'),
       email: Yup.string().email('Invalid e-mail.').required('This field is required.'),
-      password: Yup.string()
-        .min(8, 'Password must have at least 8 characters.')
-        .required('This field is required.'),
+      password: Yup.string().min(8, 'Password must have at least 8 characters.').required('This field is required.'),
       repeatedPassword: Yup.string()
         .oneOf([Yup.ref('password')], 'Password are not equal.')
         .required('This field is required.'),
@@ -37,7 +33,6 @@ const Registration = () => {
         <form className="form" onSubmit={formik.handleSubmit}>
           <h1 className="form__header">Registration</h1>
 
-          <span className="form__registrationSuccessHandler"></span>
           <span className="form__registrationErrorHandler"></span>
 
           <label htmlFor="nick">Nick</label>
@@ -105,4 +100,8 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+const mapDispatchToProps = dispatch => ({
+  signUp: credentials => dispatch(signUp(credentials)),
+});
+
+export default connect(null, mapDispatchToProps)(Registration);

@@ -11,10 +11,10 @@
 }
 
 @mixin button {
-  width: 100px;
   background-color: lightgray;
-  padding: 10px;
-  font-size: 1.25rem;
+  width: 80px;
+  padding: 8px;
+  font-size: 1.1rem;
   border-radius: 5px;
   color: black;
   cursor: pointer;
@@ -25,4 +25,11 @@
   color: $formErrorText;
   font-weight: bold;
   text-align: center;
+}
+
+@mixin input {
+  margin: 1vh 0 2vh;
+  padding: 7px 5px;
+  border: 2px solid $primaryTextColor;
+  border-radius: 4px;
 }

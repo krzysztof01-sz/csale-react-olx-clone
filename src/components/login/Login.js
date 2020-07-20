@@ -1,27 +1,19 @@
 import React from 'react';
-import './Form.scss';
+import '../../shared/Form.scss';
 import Header from '../../shared/header/Header';
-import firebase from 'firebase/app';
-// import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import 'firebase/auth';
+import { connect } from 'react-redux';
+import { login } from '../../redux/authFunctions';
 
-const Login = () => {
-  const handleFormSubmit = credencials => {
-    console.log(credencials);
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(formik.values.email, formik.values.password)
-      .then(data => console.log(data));
-  };
-
+const Login = ({ loginUser }) => {
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-    onSubmit: values => handleFormSubmit(values),
+    onSubmit: values => loginUser(values),
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid e-mail.').required('This field is required.'),
       password: Yup.string().required('This field is required.'),
@@ -35,7 +27,6 @@ const Login = () => {
         <form className="form" onSubmit={formik.handleSubmit}>
           <h1 className="form__header">Logging</h1>
 
-          <span className="form__registrationSuccessHandler"></span>
           <span className="form__registrationErrorHandler"></span>
 
           <label htmlFor="email">E-mail</label>
@@ -75,4 +66,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  loginUser: credencials => dispatch(login(credencials)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);

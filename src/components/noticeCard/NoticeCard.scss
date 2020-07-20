@@ -1,0 +1,85 @@
+@import '../../shared/variables.scss';
+
+.noticeCard__wrapper {
+  display: flex;
+  border-bottom: 10px solid $secondaryGray;
+  justify-content: center;
+  flex-direction: column;
+  width: 80vw;
+  margin: 0 auto 10vh;
+  padding: 5vw;
+  .noticeCard__name {
+    color: $primaryTextColor;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 3vh 0;
+  }
+  .noticeCard__description {
+    color: lighten($primaryTextColor, 10);
+    font-size: 1.1rem;
+    margin-bottom: 3vh;
+    &:first-line {
+      line-height: 200%;
+    }
+  }
+  .noticeCard__condition {
+    margin-bottom: 2vh;
+  }
+  .noticeCard__photo {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) and (orientation: landscape) {
+  .noticeCard__wrapper {
+    width: 60vw;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1000px) and (orientation: landscape) {
+  .noticeCard__wrapper {
+    width: 55vw;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1366px) and (orientation: landscape) {
+  .noticeCard__wrapper {
+    width: 45vw;
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
+  .noticeCard__wrapper {
+    width: 50vw;
+    .noticeCard__name {
+      font-size: 1.6rem;
+    }
+    .noticeCard__description {
+      font-size: 1.4rem;
+    }
+    .noticeCard__condition {
+      font-size: 1.4rem;
+    }
+    .noticeCard__photo {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1921px) and (orientation: landscape) {
+  .noticeCard__wrapper {
+    width: 50vw;
+    .noticeCard__name {
+      font-size: 1.6rem;
+    }
+    .noticeCard__description {
+      font-size: 1.4rem;
+    }
+    .noticeCard__condition {
+      font-size: 1.4rem;
+    }
+    .noticeCard__photo {
+      width: 100%;
+    }
+  }
+}
