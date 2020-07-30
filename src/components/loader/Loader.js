@@ -1,7 +1,13 @@
 import React from 'react';
+import './Loader.scss';
+import Loader from 'react-loader-spinner';
 
-const Loader = () => {
-  return <div>Loading...</div>;
+const AppLoader = () => {
+  return (
+    <div className="loader">
+      <Loader type="Circles" color="#f1ad3e" height={60} width={60} />
+    </div>
+  );
 };
 
-export default Loader;
+export default AppLoader;

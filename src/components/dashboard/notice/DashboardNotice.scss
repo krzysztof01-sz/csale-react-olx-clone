@@ -1,9 +1,9 @@
 @import '../../../shared/variables.scss';
 @import '../../../shared/mixins.scss';
 
-.notice__link {
+.dashboardNotice__link {
   display: contents;
-  .notice {
+  .dashboardNotice {
     @include noticeShadow;
     font-size: 16px;
     display: flex;
@@ -11,27 +11,26 @@
     align-items: center;
     justify-content: center;
     width: 96%;
-    padding: 10%;
+    padding: 5%;
     margin: 2vh 2% 10vh;
     transition: box-shadow 0.4s;
     cursor: pointer;
-    .notice__photo {
-      width: 100%;
-      height: auto;
+    .dashboardNotice__photo {
+      @include appPhoto;
     }
-    .notice__description {
+    .dashboardNotice__description {
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       height: 5vh;
     }
-    .notice__name {
+    .dashboardNotice__name {
       height: 5vh;
       margin: 2vh 0;
       text-align: center;
     }
-    .notice__price {
+    .dashboardNotice__price {
       align-self: flex-end;
       margin: 3vh 0 1vh;
       font-weight: bold;
@@ -40,8 +39,8 @@
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1000px) and (orientation: landscape) {
-  .notice__link {
-    .notice {
+  .dashboardNotice__link {
+    .dashboardNotice {
       width: 46%;
       padding: 5%;
       margin: 2vh 2% 10vh;
@@ -50,18 +49,18 @@
 }
 
 @media only screen and (min-width: 1001px) and (max-width: 1366px) and (orientation: landscape) {
-  .notice__link {
-    .notice {
+  .dashboardNotice__link {
+    .dashboardNotice {
       width: 29%;
-      padding: 5%;
+      padding: 2%;
       margin: 2vh 2% 10vh;
     }
   }
 }
 
 @media only screen and (min-width: 1367px) and (orientation: landscape) {
-  .notice__link {
-    .notice {
+  .dashboardNotice__link {
+    .dashboardNotice {
       font-size: 1.4rem;
       width: 21%;
       padding: 2%;

@@ -1,9 +1,12 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import './NoticeCard.scss';
+import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import Header from '../../shared/header/Header';
+import NoticeCardPresenter from './NoticeCardPresenter';
 
-const NoticeCard = ({ notice }) => {
+const NoticePage = props => {
   window.scrollTo(0, 0);
 
   const brightStarColor = '#f1ad3e';
@@ -16,26 +19,33 @@ const NoticeCard = ({ notice }) => {
     for (let i = 1; i <= maxProductCondition; i++) {
       i <= noticeCondition ? renderOrder.push(brightStarColor) : renderOrder.push(dimStarColor);
     }
-    const elements = renderOrder.map((starColor, index) => {
-      return <FontAwesomeIcon key={index} icon={faStar} color={starColor} />;
-    });
-    return elements;
+    return renderOrder;
   };
 
-  return (
-    <div className="noticeCard__wrapper">
-      <img className="noticeCard__photo" alt="Notice" src="https://unsplash.it/1920/1080" />
-      <div className="noticeCard__name">
-        {notice.name} - {notice.price}$
-      </div>
-      <div className="noticeCard__description">
-        Description: <br /> {notice.description}
-      </div>
-      <div className="noticeCard__condition">
-        Condition: {notice.condition} {renderNoticeCondition(notice.condition)}
-      </div>
-    </div>
-  );
+  const noticeId = useParams().id;
+  const { products } = props;
+
+  if (products !== undefined) {
+    const [product] = products.filter(prod => prod.id === noticeId);
+    const productCondition = renderNoticeCondition(product.productCondition);
+    return (
+      <>
+        <Header />
+        <NoticeCardPresenter productCondition={productCondition} notice={product} />
+      </>
+    );
+  } else {
+    return <div>There is no notices</div>;
+  }
 };
 
-export default NoticeCard;
+const mapStateToProps = state => {
+  return {
+    products: state.firestore.ordered.notices,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect(() => ['notices'])
+)(NoticePage);

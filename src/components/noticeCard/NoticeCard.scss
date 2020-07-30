@@ -1,12 +1,12 @@
 @import '../../shared/variables.scss';
-
+@import '../../shared/mixins.scss';
 .noticeCard__wrapper {
   display: flex;
   border-bottom: 10px solid $secondaryGray;
   justify-content: center;
   flex-direction: column;
   width: 80vw;
-  margin: 0 auto 10vh;
+  margin: 15vh auto 10vh;
   padding: 5vw;
   .noticeCard__name {
     color: $primaryTextColor;
@@ -19,14 +19,14 @@
     font-size: 1.1rem;
     margin-bottom: 3vh;
     &:first-line {
-      line-height: 200%;
+      line-height: 250%;
     }
   }
   .noticeCard__condition {
     margin-bottom: 2vh;
   }
   .noticeCard__photo {
-    width: 100%;
+    @include appPhoto;
   }
 }
 
@@ -60,9 +60,6 @@
     .noticeCard__condition {
       font-size: 1.4rem;
     }
-    .noticeCard__photo {
-      width: 100%;
-    }
   }
 }
 
@@ -77,9 +74,6 @@
     }
     .noticeCard__condition {
       font-size: 1.4rem;
-    }
-    .noticeCard__photo {
-      width: 100%;
     }
   }
 }

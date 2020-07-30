@@ -1,9 +1,16 @@
 import React from 'react';
 import './LogoutButton.scss';
-import { connect } from 'react-redux';
-import { logout } from '../../../redux/authFunctions';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
-const LogoutButton = ({ logout }) => {
+const LogoutButton = () => {
+  const logout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .catch(err => window.alert(err));
+  };
+
   return (
     <button onClick={logout} className="header__logout">
       Logout
@@ -11,8 +18,4 @@ const LogoutButton = ({ logout }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
-});
-
-export default connect(null, mapDispatchToProps)(LogoutButton);
+export default LogoutButton;

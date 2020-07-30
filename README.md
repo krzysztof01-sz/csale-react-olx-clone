@@ -1,3 +1,9 @@
+Do zrobienia:
+1 - popraw czytelność kodu komponentów i podziel na logiczne moduły oraz popraw nazewnictwo klas CSS zgodnie z metodologią BEM.
+Zastosuj switch komponent dla reużywalnych komponentów
+
+2 - spróbuj rozszerzyć kartę o HOC
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -3,31 +3,23 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Header from '../../shared/header/Header';
-import Notice from './notice/Notice';
-import './Dashboard.scss';
-import './notice/Notice.scss';
-import Loader from '../loader/Loader';
+import AppLoader from '../loader/Loader';
+import DashboardPresenter from './DashboardPresenter';
 
 const Dashboard = props => {
   const { isLoaded } = props.userProfile;
   const { notices } = props;
+  console.log(notices);
 
   if (isLoaded && notices) {
     return (
       <>
         <Header />
-        <div className="dashboard">
-          <header className="dashboard__header">Notices</header>
-          <section className="dashboard__notices">
-            {notices.map((singleNotice, index) => (
-              <Notice key={index} notice={singleNotice} />
-            ))}
-          </section>
-        </div>
+        <DashboardPresenter notices={notices} />
       </>
     );
   } else {
-    return <Loader />;
+    return <AppLoader />;
   }
 };
 
@@ -38,7 +30,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default compose(
-  firestoreConnect([{ collection: 'notices' }]),
-  connect(mapStateToProps)
-)(Dashboard);
+export default compose(firestoreConnect([{ collection: 'notices' }]), connect(mapStateToProps))(Dashboard);

@@ -7,6 +7,8 @@ import * as Yup from 'yup';
 import imageCompression from 'browser-image-compression';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import firebase from 'firebase/app';
+import 'firebase/storage';
 
 const AddNoticeForm = () => {
   const [description, setDescription] = useState('');
@@ -17,6 +19,13 @@ const AddNoticeForm = () => {
   const [productPhoto, setProductPhoto] = useState(null);
   const [isPhotoCompressed, setIsPhotoCompressed] = useState(false);
   const [error, setError] = useState('');
+
+  const clearPhotoInput = () => {
+    setProductPhoto(null);
+    setIsPhotoCompressed(false);
+    setFileName('');
+    setPreviewElement(<div></div>);
+  };
 
   const compressImage = async photo => {
     const options = {
@@ -31,13 +40,6 @@ const AddNoticeForm = () => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const clearPhotoInput = () => {
-    setProductPhoto(null);
-    setIsPhotoCompressed(false);
-    setFileName('');
-    setPreviewElement(<div></div>);
   };
 
   const handlePhotoChange = async ({ target }) => {
@@ -77,8 +79,21 @@ const AddNoticeForm = () => {
       window.scrollTo(0, 0);
       return false;
     }
-    data.productPhoto = productPhoto;
-    console.log(data);
+    const storageRef = firebase.storage().ref(`notices/${productPhoto.name}`);
+    await firebase
+      .storage()
+      .ref(`notices/${productPhoto.name}`)
+      .put(productPhoto)
+      .catch(err => console.log(err));
+
+    const photoURL = await storageRef.getDownloadURL();
+    await firebase
+      .firestore()
+      .collection('notices')
+      .add({
+        ...data,
+        productPhoto: photoURL,
+      });
   };
 
   const formik = useFormik({
@@ -86,6 +101,7 @@ const AddNoticeForm = () => {
       productName: '',
       productDescription: '',
       productPrice: 0,
+      productCondition: 1,
       productPhoto: '',
     },
     onSubmit: values => add(values),
@@ -98,7 +114,14 @@ const AddNoticeForm = () => {
         .min(10, 'Must be at least 10 characters.')
         .max(500, `Product's description is too long.`)
         .required('This field is required.'),
-      productPrice: Yup.number().required('This field id required.'),
+      productPrice: Yup.number()
+        .min(0, `Product's price must be at least 0 dollars`)
+        .max(20, 'The maximum is 20 dollars')
+        .required('This field id required.'),
+      productCondition: Yup.number()
+        .min(1, `Product's condition must be at least 1/5`)
+        .max(5, 'You cannot type value greater than 5.')
+        .required('This field is required.'),
       productPhoto: Yup.mixed().required('Photo is required.'),
     }),
   });
@@ -146,6 +169,20 @@ const AddNoticeForm = () => {
 
         {formik.touched.productPrice && formik.errors.productPrice ? (
           <div className="form__errorHandler">{formik.errors.productPrice}</div>
+        ) : null}
+
+        <label htmlFor="productCondition">Condition 1-5</label>
+        <input
+          className="form__input"
+          type="number"
+          min="1"
+          max="5"
+          step="1"
+          {...formik.getFieldProps('productCondition')}
+        />
+
+        {formik.touched.productCondition && formik.errors.productCondition ? (
+          <div className="form__errorHandler">{formik.errors.productCondition}</div>
         ) : null}
 
         <div className="form__photoPreview-wrapper">

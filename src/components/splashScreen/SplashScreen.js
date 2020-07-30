@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './SplashScreen.scss';
 import image from './splashScreenBg.svg';
 import { Link } from 'react-router-dom';
@@ -31,4 +31,4 @@ const SplashScreen = () => {
   );
 };
 
-export default SplashScreen;
+export default memo(SplashScreen);
