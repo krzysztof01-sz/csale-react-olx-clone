@@ -5,7 +5,6 @@ import AppLoader from '../../loader/Loader';
 import DashboardNoticeImage from './DashboardNoticeImage';
 
 const DashboardNotice = ({ notice }) => {
-  console.log(notice);
   return (
     <Link key={notice.id} className="dashboardNotice__link" to={`notice/${notice.id}`}>
       <article className="dashboardNotice">

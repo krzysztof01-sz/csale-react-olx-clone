@@ -8,6 +8,7 @@ const LogoutButton = () => {
     firebase
       .auth()
       .signOut()
+      .then(() => console.log('logout succeed'))
       .catch(err => window.alert(err));
   };
 

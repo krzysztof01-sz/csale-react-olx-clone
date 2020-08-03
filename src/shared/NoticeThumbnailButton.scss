@@ -1,0 +1,7 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
+.userNoticeThumbnail__button {
+  @include button;
+  background-color: lighten($secondaryGray, 10);
+}

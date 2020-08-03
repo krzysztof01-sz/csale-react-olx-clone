@@ -27,6 +27,7 @@
   }
   .noticeCard__photo {
     @include appPhoto;
+    height: 350px;
   }
 }
 

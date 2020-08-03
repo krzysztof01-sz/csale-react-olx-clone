@@ -1,0 +1,13 @@
+.userNoticeThumbnail__wrapper {
+  width: 100%;
+  .userNoticeThumbnail__photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .userNoticeThumbnail__options {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

@@ -1,0 +1,77 @@
+@import '../../shared/variables.scss';
+
+.userProfile__wrapper {
+  margin-top: 30vw;
+  width: 100vw;
+  padding: 0 5vw;
+  .userProfile__userData {
+    .userProfile__userInfo {
+      background-color: lighten($secondaryGray, 10);
+      padding: 5vw;
+      line-height: 150%;
+      margin-bottom: 10vh;
+      border-bottom: 5px solid transparentize($primaryTextColor, 0.7);
+    }
+  }
+  .userProfile__notices-header {
+    font-size: 1.2rem;
+    margin-bottom: 2vh;
+  }
+  .userProfile__greeting {
+    font-size: 1.5rem;
+    margin-bottom: 5vh;
+  }
+  .userNoticeThumbnails {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 999px) {
+  .userProfile__wrapper {
+    margin-top: 20vw;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
+  .userProfile__wrapper {
+    margin-top: 10vw;
+    .userProfile__userData {
+      .userProfile__userInfo {
+        background-color: rgb(238, 238, 238);
+        padding: 2vw;
+        line-height: 140%;
+        font-size: 1.1rem;
+        margin-bottom: 10vh;
+        border-bottom: 5px solid transparentize($primaryTextColor, 0.5);
+      }
+    }
+    .userProfile__notices-header {
+      font-size: 1.4rem;
+      margin-bottom: 5vh;
+    }
+  }
+}
+
+@media only screen and (min-width: 1367px) and (orientation: landscape) {
+  .userProfile__wrapper {
+    margin-top: 10vw;
+    .userProfile__userData {
+      .userProfile__userInfo {
+        padding: 2vw;
+        line-height: 160%;
+        font-size: 1.3rem;
+      }
+    }
+    .userProfile__notices-header {
+      font-size: 1.5rem;
+      margin-bottom: 10vh;
+    }
+    .userProfile__greeting {
+      font-size: 2rem;
+      margin-bottom: 5vh;
+    }
+  }
+}

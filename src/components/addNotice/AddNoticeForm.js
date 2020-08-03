@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import Header from '../../shared/header/Header';
+import AddNoticeFormDescription from './AddNoticeFormDescription';
+import AddNoticeFormFilenameLabel from './AddNoticeFormFilenameLabel';
+import AddNoticeFormButton from './AddNoticeFormButton';
 import './AddNoticeForm.scss';
 import '../../shared/Form.scss';
+import firebase from 'firebase/app';
+import 'firebase/storage';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import imageCompression from 'browser-image-compression';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import firebase from 'firebase/app';
-import 'firebase/storage';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const AddNoticeForm = () => {
-  const [description, setDescription] = useState('');
-  const [descriptionLength, setDescriptionLength] = useState(0);
-  const [isDescriptionValid, setIsDescriptionValid] = useState(false);
   const [fileName, setFileName] = useState('');
   const [previewElement, setPreviewElement] = useState(<div></div>);
-  const [productPhoto, setProductPhoto] = useState(null);
   const [isPhotoCompressed, setIsPhotoCompressed] = useState(false);
+  const [productPhoto, setProductPhoto] = useState(null);
   const [error, setError] = useState('');
 
   const clearPhotoInput = () => {
@@ -38,13 +38,12 @@ const AddNoticeForm = () => {
       const compressedFile = await imageCompression(photo, options);
       return compressedFile;
     } catch (err) {
-      console.log(err);
+      setError(err);
     }
   };
 
   const handlePhotoChange = async ({ target }) => {
     const reader = new FileReader();
-
     let photo = target.files[0];
 
     if (photo !== undefined) {
@@ -66,25 +65,19 @@ const AddNoticeForm = () => {
     }
   };
 
-  const handleDescriptionChange = text => {
-    text.length < 10 || text.length > 500 ? setIsDescriptionValid(false) : setIsDescriptionValid(true);
-
-    setDescription(text);
-    setDescriptionLength(text.length);
-  };
-
-  const add = async data => {
+  const addNotice = async data => {
     if (productPhoto === null) {
       setError('Something went wrong. Try once again.');
       window.scrollTo(0, 0);
       return false;
     }
+
     const storageRef = firebase.storage().ref(`notices/${productPhoto.name}`);
     await firebase
       .storage()
       .ref(`notices/${productPhoto.name}`)
       .put(productPhoto)
-      .catch(err => console.log(err));
+      .catch(err => setError(err.message));
 
     const photoURL = await storageRef.getDownloadURL();
     await firebase
@@ -93,6 +86,7 @@ const AddNoticeForm = () => {
       .add({
         ...data,
         productPhoto: photoURL,
+        createdBy: firebase.auth().currentUser.uid,
       });
   };
 
@@ -104,7 +98,7 @@ const AddNoticeForm = () => {
       productCondition: 1,
       productPhoto: '',
     },
-    onSubmit: values => add(values),
+    onSubmit: values => addNotice(values),
     validationSchema: Yup.object({
       productName: Yup.string()
         .min(2, 'Product name is too short.')
@@ -131,7 +125,7 @@ const AddNoticeForm = () => {
       <Header />
       <form className="form" onSubmit={formik.handleSubmit}>
         <h1 className="form__header">New notice</h1>
-        <span className="form__registrationErrorHandler">{error}</span>
+        <span className="form__mainErrorHandler">{error}</span>
         <label htmlFor="productName">Notice name</label>
         <input className="form__input" type="text" {...formik.getFieldProps('productName')} />
 
@@ -139,23 +133,7 @@ const AddNoticeForm = () => {
           <div className="form__errorHandler">{formik.errors.productName}</div>
         ) : null}
 
-        <label htmlFor="productDescription">Description</label>
-        <textarea
-          rows="5"
-          className="form__productDescription"
-          name="productDescription"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          onInput={({ target }) => handleDescriptionChange(target.value)}
-          value={description}></textarea>
-
-        <div className={`form__wordCounter ${isDescriptionValid ? 'validDescription' : 'invalidDescription'}`}>
-          Characters: {descriptionLength}/500
-        </div>
-
-        {formik.touched.productDescription && formik.errors.productDescription ? (
-          <div className="form__errorHandler">{formik.errors.productDescription}</div>
-        ) : null}
+        <AddNoticeFormDescription formik={formik} />
 
         <label htmlFor="productPrice">Price ($)</label>
         <input
@@ -199,24 +177,13 @@ const AddNoticeForm = () => {
           onInput={e => handlePhotoChange(e)}
           id="productPhoto"
         />
-        <label htmlFor="productPhoto">
-          <FontAwesomeIcon icon={faUpload} />
-          <span className="fileLabelSpan">Choose a photo {fileName}</span>
-        </label>
+        <AddNoticeFormFilenameLabel filename={fileName} />
 
         {formik.touched.productPhoto && formik.errors.productPhoto ? (
           <div className="form__errorHandler">{formik.errors.productPhoto}</div>
         ) : null}
 
-        {isPhotoCompressed && productPhoto !== null ? (
-          <button className="form__button" type="submit">
-            Add notice
-          </button>
-        ) : (
-          <button disabled className="form__button" type="submit">
-            Add notice
-          </button>
-        )}
+        <AddNoticeFormButton isPhotoCompressed={isPhotoCompressed} productPhoto={productPhoto} />
       </form>
     </div>
   );

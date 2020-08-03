@@ -1,7 +1,7 @@
-@import '../../../shared/mixins.scss';
-@import '../../../shared/variables.scss';
+@import '../mixins.scss';
+@import '../variables.scss';
 
-.addNoticeButton {
+.headerIcon {
   font-size: 2.2rem;
   &:hover {
     cursor: pointer;
@@ -9,13 +9,13 @@
 }
 
 @media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
-  .addNoticeButton {
+  .headerIcon {
     font-size: 2.5rem;
   }
 }
 
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
-  .addNoticeButton {
+  .headerIcon {
     font-size: 2.5rem;
   }
 }

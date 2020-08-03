@@ -6,7 +6,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import Header from '../../shared/header/Header';
 import NoticeCardPresenter from './NoticeCardPresenter';
 
-const NoticePage = props => {
+const NoticeCard = props => {
   window.scrollTo(0, 0);
 
   const brightStarColor = '#f1ad3e';
@@ -48,4 +48,4 @@ const mapStateToProps = state => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect(() => ['notices'])
-)(NoticePage);
+)(NoticeCard);
