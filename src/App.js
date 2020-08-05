@@ -17,7 +17,7 @@ const App = ({ isUserLogged }) => {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            {isUserLogged ? <Redirect to="/profile" /> : <SplashScreen />}
+            {isUserLogged ? <Redirect to="/dashboard" /> : <SplashScreen />}
           </Route>
           <Route path="/login">{isUserLogged ? <Redirect to="/dashboard" /> : <Login />}</Route>
           <Route path="/signup">{isUserLogged ? <Redirect to="/dashboard" /> : <Registration />}</Route>

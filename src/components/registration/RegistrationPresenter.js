@@ -3,7 +3,6 @@ import Header from '../../shared/header/Header';
 import '../../shared/Form.scss';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import '../../shared/Form.scss';
 
 const RegistrationPresenter = ({ signUp, error }) => {
   return (

@@ -14,10 +14,20 @@ const UserProfile = props => {
   const renderUserNotices = () => {
     if (allNotices) {
       const userNotices = allNotices.filter(notice => notice.createdBy === userUid);
+      if (userNotices.length === 0) {
+        return <div>You don't have any notices.</div>;
+      }
       const notices = userNotices.map(notice => <NoticeThumbnail key={v1()} notice={notice} />);
       return notices;
     } else {
-      return <div>You don't have notices. Make a first one!</div>;
+      return (
+        <div>
+          Csale haven't got any notices. Create the first notice{' '}
+          <span role="img" aria-label="cool emoji">
+            😎
+          </span>
+        </div>
+      );
     }
   };
 
@@ -33,7 +43,7 @@ const UserProfile = props => {
           <ul className="userProfile__userInfo">
             <li>Money: {userMoney}$</li>
             <li>Email: {userEmail}</li>
-            <li>Created at: {formattedDate}</li>
+            <li>Created: {formattedDate}</li>
           </ul>
           <h2 className="userProfile__notices-header">Your notices:</h2>
           <ul className="userNoticeThumbnails">{renderUserNotices()}</ul>

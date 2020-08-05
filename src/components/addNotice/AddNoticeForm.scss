@@ -15,11 +15,14 @@
       font-weight: bold;
       margin-bottom: 2vh;
     }
-    .validDescription {
+    .form__wordCounter-valid {
       color: rgb(0, 107, 0);
     }
-    .invalidDescription {
+    .form__wordCounter-invalid {
       color: rgb(124, 0, 0);
+    }
+    .requiredPhotoSpan {
+      color: darken($secondaryGray, 30);
     }
     .form__fileInput {
       width: 0;
@@ -29,18 +32,23 @@
       margin: 0;
       opacity: 0;
       position: absolute;
-      & + label:hover {
-        cursor: pointer;
-        background-color: darken($secondaryGray, 15);
-      }
-      & + label {
+      & + .form__fileInput-label {
         margin-bottom: 2vh;
         padding: 10px 7px;
         background-color: $secondaryGray;
         border-radius: 5px;
-      }
-      & + label .fileLabelSpan {
-        margin-left: 2vw;
+        & + .form__fileInput-status {
+          margin: 10px 0;
+          font-size: 1.1rem;
+          color: darken($primaryTextColor, 20);
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: darken($secondaryGray, 15);
+        }
+        .fileLabelSpan {
+          margin-left: 2vw;
+        }
       }
     }
     .form__photoPreview-wrapper {
@@ -75,6 +83,22 @@
         color: $secondaryGray;
         font-size: 30px;
         display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1921px) and (orientation: landscape) {
+  .addNoticeForm__wrapper {
+    margin-top: 20vh;
+    .form {
+      .form__fileInput {
+        & + .form__fileInput-label {
+          margin-bottom: 2vh;
+          padding: 14px 30px;
+          background-color: #cdcdcd;
+          border-radius: 5px;
+        }
       }
     }
   }

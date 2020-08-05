@@ -5,6 +5,7 @@ const DashboardNoticeImage = ({ imageSource }) => {
   const { src } = useImage({
     srcList: imageSource,
   });
+
   return <img alt="notice" className="dashboardNotice__photo" src={src} />;
 };
 

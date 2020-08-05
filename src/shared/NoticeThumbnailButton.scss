@@ -2,6 +2,34 @@
 @import 'variables.scss';
 
 .userNoticeThumbnail__button {
-  @include button;
-  background-color: lighten($secondaryGray, 10);
+  @include userNoticeThumbnailButton;
+}
+
+.userNoticeThumbnail__button-gray {
+  @include userNoticeThumbnailButton;
+  border-bottom: 3px solid $secondaryGray;
+  &:hover {
+    background: linear-gradient(white 85%, $secondaryGray);
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 999px) and (orientation: landscape) {
+  .userNoticeThumbnail__button,
+  .userNoticeThumbnail__button-gray {
+    width: 35%;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1920px) and (orientation: landscape) {
+  .userNoticeThumbnail__button,
+  .userNoticeThumbnail__button-gray {
+    width: 35%;
+  }
+}
+
+@media only screen and (min-width: 1921px) and (orientation: landscape) {
+  .userNoticeThumbnail__button,
+  .userNoticeThumbnail__button-gray {
+    width: 30%;
+  }
 }

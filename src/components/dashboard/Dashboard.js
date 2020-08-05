@@ -7,15 +7,20 @@ import AppLoader from '../loader/Loader';
 import DashboardPresenter from './DashboardPresenter';
 
 const Dashboard = props => {
-  const { isLoaded } = props.userProfile;
   const { notices } = props;
-  console.log(notices);
 
-  if (isLoaded && notices) {
+  if (notices?.length > 0) {
     return (
       <>
         <Header />
         <DashboardPresenter notices={notices} />
+      </>
+    );
+  } else if (notices?.length === 0) {
+    return (
+      <>
+        <Header />
+        <div style={{ marginTop: 100 }}>Nie ma ogłoszeń!</div>
       </>
     );
   } else {

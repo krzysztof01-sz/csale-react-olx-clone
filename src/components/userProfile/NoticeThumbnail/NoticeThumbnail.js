@@ -5,8 +5,8 @@ import './NoticeThumbnail.scss';
 
 const NoticeThumbnail = ({ notice }) => {
   return (
-    <li>
-      <article className="userNoticeThumbnail__wrapper">
+    <li className="userNoticeThumbnail__wrapper">
+      <article>
         <img
           alt={`User notice - ${notice.productName}`}
           src={notice.productPhoto}
@@ -14,7 +14,7 @@ const NoticeThumbnail = ({ notice }) => {
         />
         <div className="userNoticeThumbnail__options">
           <EditNoticeButton />
-          <RemoveNoticeButton />
+          <RemoveNoticeButton notice={notice} sharedId={notice.sharedId} />
         </div>
       </article>
     </li>
