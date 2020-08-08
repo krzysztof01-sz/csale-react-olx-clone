@@ -1,3 +1,5 @@
+// this data can be public
+
 const firebaseConfig = {
   apiKey: 'AIzaSyCNQkGxZOAxyv0blEI4_nDXAwDTCo610_0',
   authDomain: 'csale-3d097.firebaseapp.com',
