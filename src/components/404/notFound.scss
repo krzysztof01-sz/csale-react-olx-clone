@@ -1,1 +1,8 @@
-// Lazy Chris will do it later 🥱
+@import '../../shared/mixins.scss';
+
+.page-not-found {
+  width: 100vw;
+  height: 100vh;
+  @include flexCenter;
+  font-size: 1.8rem;
+}

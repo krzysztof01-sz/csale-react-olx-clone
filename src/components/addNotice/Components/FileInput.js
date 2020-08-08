@@ -34,7 +34,6 @@ const FileInput = ({ values, setFieldValue, statuses }) => {
 
   return (
     <>
-      {/* <PhotoPreview values={values} setFieldValue={setFieldValue} /> */}
       <PhotoPreview>
         {() => {
           const renderPhotoPreview = () => {
