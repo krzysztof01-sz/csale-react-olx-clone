@@ -1,6 +1,6 @@
 import React from 'react';
 import RemoveNoticeButton from '../../buttons/RemoveNoticeButton/RemoveNoticeButton';
-import EditNoticeButton from '../../buttons/EditUpdateButton/EditNoticeButton';
+import EditNoticeButton from '../../EditUpdateButton/EditNoticeButton';
 import './NoticeThumbnail.scss';
 
 const NoticeThumbnail = ({ notice }) => {
@@ -13,8 +13,8 @@ const NoticeThumbnail = ({ notice }) => {
           className="userNoticeThumbnail__photo"
         />
         <div className="userNoticeThumbnail__options">
-          <EditNoticeButton />
-          <RemoveNoticeButton notice={notice} sharedId={notice.sharedId} />
+          <EditNoticeButton sharedId={notice.sharedId} />
+          <RemoveNoticeButton sharedId={notice.sharedId} />
         </div>
       </article>
     </li>

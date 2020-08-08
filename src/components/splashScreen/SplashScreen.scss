@@ -29,9 +29,10 @@
       }
     }
     .buttons {
+      width: 70vw;
       margin: 0 auto;
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
 
       .splashScreen__button {
         @include button;
@@ -39,7 +40,6 @@
 
       .button-login {
         background-color: $primaryColor;
-        margin-left: 15vw;
       }
     }
   }
@@ -66,9 +66,9 @@
         }
       }
       .buttons {
+        width: 50vw;
         .button-login {
           background-color: $primaryColor;
-          margin-left: 10vw;
         }
       }
     }

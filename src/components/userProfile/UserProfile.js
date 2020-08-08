@@ -11,6 +11,9 @@ import { v1 } from 'uuid';
 const UserProfile = props => {
   const { userMoney, userNick, userCreatedAt, userEmail, allNotices, userUid } = props;
 
+  const date = moment(Number(userCreatedAt)).calendar();
+  const formattedDate = String(date).replace(/["/"]/g, '.');
+
   const renderUserNotices = () => {
     if (allNotices) {
       const userNotices = allNotices.filter(notice => notice.createdBy === userUid);
@@ -20,19 +23,9 @@ const UserProfile = props => {
       const notices = userNotices.map(notice => <NoticeThumbnail key={v1()} notice={notice} />);
       return notices;
     } else {
-      return (
-        <div>
-          Csale haven't got any notices. Create the first notice{' '}
-          <span role="img" aria-label="cool emoji">
-            😎
-          </span>
-        </div>
-      );
+      return <div>Csale haven't got any notices. Create the first notice</div>;
     }
   };
-
-  const date = moment(Number(userCreatedAt)).calendar();
-  const formattedDate = String(date).replace(/["/"]/g, '.');
 
   return (
     <>
