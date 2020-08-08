@@ -11,6 +11,7 @@ key.json
 debug.log
 /functions
 .gitignore
+README.md
 
 # testing
 /coverage
