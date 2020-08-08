@@ -4,6 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
+yarn.lock
+ui-debug.log
+package-lock.json
+key.json
+debug.log
+/functions
+.gitignore
 
 # testing
 /coverage
