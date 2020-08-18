@@ -26,7 +26,7 @@ const App = ({ isUserLogged }) => {
           <Route path="/add">{isUserLogged ? <AddNoticeForm /> : <Redirect to="/login" />}</Route>
           <Route path="/profile">{isUserLogged ? <UserProfile /> : <Redirect to="/login" />}</Route>
           <Route path="/update/:id">{isUserLogged ? <AddNoticeForm /> : <Redirect to="/login" />}</Route>
-          <Route component={notFound} />
+          <Route component={notFound} /> 
         </Switch>
       </div>
     </Router>

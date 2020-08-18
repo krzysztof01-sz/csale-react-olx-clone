@@ -1,12 +1,6 @@
-Do zrobienia:
-1 - popraw czytelność kodu komponentów i podziel na logiczne moduły oraz popraw nazewnictwo klas CSS zgodnie z metodologią BEM.
-Zastosuj switch komponent dla reużywalnych komponentów
-
-2 - spróbuj rozszerzyć kartę o HOC
+Csale - online shopping platform created using React, Redux, Firebase technology stack.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 In the project directory, you can run:
 
