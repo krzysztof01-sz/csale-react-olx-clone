@@ -1,10 +1,11 @@
 import React from 'react';
 
+const minDesciptionLength = 10;
+const maxDescriptionLength = 500;
+let wordCounterClassname = 'invalid';
+
 const WordCounter = ({ amountOfWords }) => {
   const length = amountOfWords;
-  const minDesciptionLength = 10;
-  const maxDescriptionLength = 500;
-  let wordCounterClassname = 'invalid';
 
   length < minDesciptionLength || length > maxDescriptionLength
     ? (wordCounterClassname = 'invalid')

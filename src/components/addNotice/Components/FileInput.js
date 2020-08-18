@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import PhotoPreview from './PhotoPreview';
 import imageCompression from 'browser-image-compression';
-import FileInputLabel from './FileInputLabel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+import FileInputLabel from './FileInputLabel';
+import PhotoPreview from './PhotoPreview';
 
 const FileInput = ({ values, setFieldValue, statuses }) => {
   const [error, setError] = useState(null);
@@ -34,22 +35,11 @@ const FileInput = ({ values, setFieldValue, statuses }) => {
 
   return (
     <>
-      <PhotoPreview>
-        {() => {
-          const renderPhotoPreview = () => {
-            if (!values.productPhoto) {
-              return <div></div>;
-            } else if (typeof values.productPhoto === 'string') {
-              return <img className="form__photoPreview" src={values.productPhoto} alt="Preview" />;
-            } else {
-              return (
-                <img className="form__photoPreview" src={URL.createObjectURL(values.productPhoto)} alt="Preview" />
-              );
-            }
-          };
+      <PhotoPreview values={values}>
+        {preview => {
           return (
             <div className="form__photoPreview-wrapper">
-              {renderPhotoPreview()}
+              {preview}
               <FontAwesomeIcon
                 className="form__photoPreview-wrapper-icon"
                 icon={faTrashAlt}
