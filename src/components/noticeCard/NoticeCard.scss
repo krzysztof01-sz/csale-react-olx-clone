@@ -1,33 +1,57 @@
 @import '../../shared/variables.scss';
 @import '../../shared/mixins.scss';
+
+$bb-small: 3vh;
+
 .noticeCard__wrapper {
+  border-bottom: $noticeCardWrapperBorderBottom;
+  @include notice-margin(0, auto, 10vh);
   display: flex;
-  border-bottom: 10px solid $secondaryGray;
   justify-content: center;
   flex-direction: column;
-  width: 80vw;
-  margin: 15vh auto 10vh;
+  width: 95vw;
   padding: 5vw;
-  .noticeCard__name {
-    color: $primaryTextColor;
-    font-weight: bold;
-    font-size: 1.3rem;
-    margin: 3vh 0;
-  }
-  .noticeCard__description {
-    color: lighten($primaryTextColor, 10);
-    font-size: 1.1rem;
-    margin-bottom: 3vh;
-    &:first-line {
-      line-height: 250%;
-    }
-  }
-  .noticeCard__condition {
-    margin-bottom: 2vh;
-  }
   .noticeCard__photo {
     @include appPhoto;
-    height: 350px;
+  }
+  .noticeCard__noticeInfo {
+    @include notice-margin(2vh, 0, 5vh);
+    @include notice-padding(5vh, 4vw);
+    background-color: lighten($secondaryGray, 15);
+    .noticeCard__name {
+      color: $primaryTextColor;
+      font-size: $font-smallXL;
+      margin-bottom: $bb-small;
+      font-weight: bold;
+    }
+    .noticeCard__bottomWrapper {
+      @include cardBottomWrapper;
+      .bottomWrapper__productPrice {
+        font-size: $font-mediumXL;
+        color: darken($primaryColor, 10);
+        text-align: right;
+        font-weight: bold;
+      }
+    }
+    .noticeCard__description {
+      color: lighten($primaryTextColor, 10);
+      font-size: $font-small;
+      margin-bottom: $bb-small;
+    }
+    .noticeCard__condition {
+      margin-bottom: $bb-small;
+    }
+  }
+  .authorInfo {
+    margin: 2vh 0;
+    padding: 3vw;
+    line-height: $lh-medium;
+    .authorInfo__header {
+      font-size: $font-smallXL;
+    }
+    .authorInfo-item {
+      font-size: $font-small;
+    }
   }
 }
 
@@ -45,21 +69,41 @@
 
 @media only screen and (min-width: 1001px) and (max-width: 1366px) and (orientation: landscape) {
   .noticeCard__wrapper {
-    width: 45vw;
+    width: 55vw;
   }
 }
 
 @media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
   .noticeCard__wrapper {
     width: 50vw;
-    .noticeCard__name {
-      font-size: 1.6rem;
+    .noticeCard__photo {
+      height: 450px;
     }
-    .noticeCard__description {
-      font-size: 1.4rem;
+    .noticeCard__noticeInfo {
+      .noticeCard__bottomWrapper {
+        .bottomWrapper__productPrice {
+          font-size: $font-mediumXXL;
+        }
+        .bottomWrapper__creationDate {
+          font-size: $font-smallXXL;
+        }
+      }
+      .noticeCard__name {
+        font-size: $font-mediumXL;
+      }
+      .noticeCard__description,
+      .noticeCard__condition {
+        font-size: $font-smallXXL;
+      }
     }
-    .noticeCard__condition {
-      font-size: 1.4rem;
+    .authorInfo {
+      .authorInfo__header {
+        font-size: $font-medium;
+      }
+      .authorInfo-item {
+        line-height: $lh-medium;
+        font-size: $font-smallXL;
+      }
     }
   }
 }
@@ -67,17 +111,32 @@
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
   .noticeCard__wrapper {
     width: 50vw;
-    .noticeCard__name {
-      font-size: 1.6rem;
-    }
-    .noticeCard__description {
-      font-size: 1.4rem;
-    }
-    .noticeCard__condition {
-      font-size: 1.4rem;
-    }
     .noticeCard__photo {
-      height: 430px;
+      height: 500px;
+    }
+    .noticeCard__noticeInfo {
+      .noticeCard__bottomWrapper {
+        .bottomWrapper__productPrice {
+          font-size: $font-mediumXXL;
+        }
+        .bottomWrapper__creationDate {
+          font-size: $font-smallXL;
+        }
+      }
+      .noticeCard__name {
+        font-size: $font-medium;
+      }
+      .noticeCard__description,
+      .noticeCard__condition {
+        font-size: $font-smallXXL;
+      }
+    }
+    .authorInfo {
+      line-height: $lh-medium;
+      .authorInfo__header,
+      .authorInfo-item {
+        font-size: $font-smallXXL;
+      }
     }
   }
 }

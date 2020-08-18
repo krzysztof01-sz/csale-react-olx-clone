@@ -1,17 +1,27 @@
 @import '../../shared/mixins.scss';
 @import '../../shared/variables.scss';
 
+.noticesStatus {
+  @include noticesStatus;
+  .noticesStatus__link {
+    font-size: inherit;
+  }
+}
+
 .dashboard {
   width: 100vw;
   padding: 2vh 5vw;
   .dashboard__header {
-    font-size: 1.5rem;
-    margin: 18vh 0 0 4%;
+    font-size: $font-medium;
+    border-bottom: $primaryBorderBottom;
+    width: 20vw;
+    padding-bottom: 2vh;
+    margin: 8vh 0 3vh 2vw;
   }
   .dashboard__notices {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-flow: column wrap;
     padding: 2vw;
   }
 }
@@ -27,7 +37,8 @@
 @media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
   .dashboard {
     .dashboard__header {
-      font-size: 1.8rem;
+      font-size: $font-mediumXL;
+      width: 10vw;
     }
   }
 }
@@ -35,7 +46,8 @@
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
   .dashboard {
     .dashboard__header {
-      font-size: 2rem;
+      font-size: $font-mediumXXL;
+      width: 10vw;
     }
   }
 }

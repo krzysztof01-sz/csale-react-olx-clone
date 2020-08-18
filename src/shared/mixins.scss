@@ -1,13 +1,11 @@
 @import './variables.scss';
 
 @mixin primaryShadow {
-  -webkit-box-shadow: 0px 3px 10px -5px #000000;
   box-shadow: 0px 3px 10px -5px #000000;
 }
 
 @mixin noticeShadow {
-  -webkit-box-shadow: 0px 4px 8px -5px #000000;
-  box-shadow: 0px 4px 8px -5px #000000;
+  box-shadow: 2px 6px 8px -5px #000000;
 }
 
 @mixin flexCenter {
@@ -18,7 +16,7 @@
 
 @mixin userNoticeThumbnailButton {
   padding: 8px;
-  font-size: 1.1rem;
+  font-size: $font-small;
   color: black;
   cursor: pointer;
   width: 45%;
@@ -30,9 +28,25 @@
   }
 }
 
+@mixin notice-margin($top, $side, $bottom) {
+  margin: $top $side $bottom;
+}
+
+@mixin notice-padding($top-bottom, $right-left) {
+  padding: $top-bottom $right-left;
+}
+
+@mixin cardBottomWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
 @mixin button {
-  background-color: lightgray;
-  width: 80px;
+  background-color: $secondaryGray;
+  width: 100px;
   padding: 8px;
   font-size: 1.1rem;
   border-radius: 5px;
@@ -40,15 +54,25 @@
   cursor: pointer;
 }
 
+@mixin noticesStatus {
+  margin: 10vh 0 0 5vw;
+  font-size: 1.7rem;
+  a {
+    text-decoration: underline;
+    color: $primaryColor;
+  }
+}
+
 @mixin appPhoto {
   width: 100%;
-  height: 300px;
+  height: 350px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
 @mixin errorText {
   margin-bottom: 2vh;
-  color: $formErrorText;
+  color: $formErrorColor;
   font-weight: bold;
   text-align: center;
 }

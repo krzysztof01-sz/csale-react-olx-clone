@@ -3,25 +3,25 @@
 @import '../../shared/mixins.scss';
 
 .splashScreen__wrapper {
+  @include flexCenter;
   width: 100vw;
   height: 100vh;
-  padding: 2vh 10vw 10vh;
 
   .splashScreen {
     .splashScreen__header {
-      margin: 5vh 0;
-      font-size: 40px;
+      font-size: $font-large;
       text-align: center;
     }
     .splashScreen__imageWrapper {
-      display: flex;
+      @include flexCenter;
       flex-direction: column;
-      align-items: center;
       .splashScreen__slogan {
-        font-size: 20px;
+        font-size: $font-smallXL;
+        line-height: $lh-small;
+        height: 100%;
+        width: 70vw;
         text-align: center;
-        margin-bottom: 8vh;
-        width: 60vw;
+        margin-bottom: 10vh;
       }
       .splashScreen__image {
         width: 55vw;
@@ -29,7 +29,7 @@
       }
     }
     .buttons {
-      width: 70vw;
+      width: 80vw;
       margin: 0 auto;
       display: flex;
       justify-content: space-evenly;
@@ -48,21 +48,16 @@
 //mutual styles for devices 1000px +
 @media only screen and (min-width: 1000px) and (orientation: landscape) {
   .splashScreen__wrapper {
-    padding: 2vh 10vw;
+    padding: 5vh 10vw;
 
     .splashScreen {
       .splashScreen__imageWrapper {
-        justify-content: center;
         flex-direction: row;
         width: 70vw;
-        margin: 0 auto 5vh;
+        margin: 5vh auto;
         .splashScreen__slogan {
           width: 40%;
-          margin-left: 10%;
-        }
-        .splashScreen__image {
-          margin-left: 10vw;
-          margin: 7vh 0;
+          margin: 0 0 0 10vw;
         }
       }
       .buttons {
@@ -79,11 +74,12 @@
   .splashScreen__wrapper {
     .splashScreen {
       .splashScreen__header {
-        font-size: 45px;
+        font-size: $font-largeXL;
       }
       .splashScreen__imageWrapper {
         .splashScreen__slogan {
-          font-size: 20px;
+          font-size: $font-smallXL;
+          width: 60vw;
         }
         .splashScreen__image {
           width: 25vw;
@@ -102,11 +98,11 @@
   .splashScreen__wrapper {
     .splashScreen {
       .splashScreen__header {
-        font-size: 45px;
+        font-size: $font-largeXL;
       }
       .splashScreen__imageWrapper {
         .splashScreen__slogan {
-          font-size: 24px;
+          font-size: $font-smallXXL;
         }
         .splashScreen__image {
           width: 20vw;
@@ -125,12 +121,12 @@
   .splashScreen__wrapper {
     .splashScreen {
       .splashScreen__header {
-        font-size: 50px;
+        font-size: $font-huge;
         margin-bottom: 10vh;
       }
       .splashScreen__imageWrapper {
         .splashScreen__slogan {
-          font-size: 24px;
+          font-size: $font-mediumXL;
         }
         .splashScreen__image {
           width: 20vw;
@@ -140,7 +136,7 @@
         .splashScreen__button {
           width: 180px;
           padding: 12px;
-          font-size: 20px;
+          font-size: $font-smallXXL;
         }
       }
     }
@@ -151,12 +147,12 @@
   .splashScreen__wrapper {
     .splashScreen {
       .splashScreen__header {
-        font-size: 50px;
+        font-size: $font-largeXXL;
         margin-bottom: 10vh;
       }
       .splashScreen__imageWrapper {
         .splashScreen__slogan {
-          font-size: 30px;
+          font-size: $font-mediumXL;
         }
         .splashScreen__image {
           width: 22vw;
@@ -166,7 +162,7 @@
         .splashScreen__button {
           width: 180px;
           padding: 12px;
-          font-size: 22px;
+          font-size: $font-smallXXL;
         }
       }
     }

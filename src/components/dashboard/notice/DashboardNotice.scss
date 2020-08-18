@@ -5,66 +5,113 @@
   display: contents;
   .dashboardNotice {
     @include noticeShadow;
-    font-size: 16px;
-    display: flex;
+    @include flexCenter;
+    width: $notice-normal;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 96%;
-    padding: 5%;
-    margin: 2vh 2% 10vh;
-    transition: box-shadow 0.4s;
+    padding: 10% 5%;
+    margin-bottom: 10vh;
     cursor: pointer;
     .dashboardNotice__photo {
       @include appPhoto;
     }
+    .dashboardNotice__name {
+      font-size: $font-smallXL;
+      text-align: center;
+      height: 5vh;
+      margin: 2vh 0;
+    }
     .dashboardNotice__description {
+      font-size: $font-small;
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       height: 5vh;
+      margin-bottom: 2vh;
     }
-    .dashboardNotice__name {
-      height: 5vh;
-      margin: 2vh 0;
-      text-align: center;
-    }
-    .dashboardNotice__price {
-      align-self: flex-end;
-      margin: 3vh 0 1vh;
-      font-weight: bold;
-    }
-  }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 1000px) and (orientation: landscape) {
-  .dashboardNotice__link {
-    .dashboardNotice {
-      width: 46%;
-      padding: 5%;
-      margin: 2vh 2% 10vh;
+    .dashboardNotice__bottomWrapper {
+      @include cardBottomWrapper;
+      .bottomWrapper-productPrice {
+        font-size: $font-smallXL;
+        color: darken($primaryColor, 10);
+        font-weight: bold;
+      }
+      .bottomWrapper-creationDate {
+        color: lighten($primaryTextColor, 20);
+      }
     }
   }
 }
 
-@media only screen and (min-width: 1001px) and (max-width: 1366px) and (orientation: landscape) {
+@media only screen and (min-width: 600px) and (max-width: 999px) and (orientation: landscape) {
   .dashboardNotice__link {
     .dashboardNotice {
-      width: 29%;
-      padding: 2%;
-      margin: 2vh 2% 10vh;
+      width: $notice-large;
+      @include notice-padding(5vh, 3vw);
     }
   }
 }
 
-@media only screen and (min-width: 1367px) and (orientation: landscape) {
+@media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
   .dashboardNotice__link {
     .dashboardNotice {
-      font-size: 1.4rem;
-      width: 21%;
-      padding: 2%;
-      margin: 2vh 2% 10vh;
+      width: $notice-medium;
+      @include notice-padding(5vh, 2vw);
+      .dashboardNotice__name {
+        font-size: $font-smallXL;
+      }
+      .dashboardNotice__description {
+        font-size: $font-small;
+        margin-bottom: 2vh;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1919px) and (orientation: landscape) {
+  .dashboardNotice__link {
+    .dashboardNotice {
+      width: $notice-medium;
+      @include notice-padding(3%, 1.5%);
+      .dashboardNotice__name {
+        font-size: $font-smallXL;
+      }
+      .dashboardNotice__description {
+        font-size: $font-small;
+      }
+      .dashboardNotice__bottomWrapper {
+        .bottomWrapper-productPrice {
+          font-size: $font-smallXXL;
+        }
+        .bottomWrapper-creationDate {
+          font-size: $font-small;
+          color: lighten($primaryTextColor, 20);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1920px) and (orientation: landscape) {
+  .dashboardNotice__link {
+    .dashboardNotice {
+      width: $notice-small;
+      @include notice-padding(3%, 1.5%);
+      .dashboardNotice__description {
+        font-size: $font-small;
+      }
+      .dashboardNotice__name {
+        font-size: $font-smallXL;
+      }
+      .dashboardNotice__bottomWrapper {
+        .bottomWrapper-productPrice {
+          font-size: $font-medium;
+        }
+        .bottomWrapper-creationDate {
+          font-size: $font-small;
+          color: lighten($primaryTextColor, 20);
+        }
+      }
     }
   }
 }

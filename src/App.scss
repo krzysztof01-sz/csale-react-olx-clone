@@ -2,10 +2,12 @@
 
 body {
   margin: 0;
+  padding: 0;
+  border: 0;
   max-width: 100vw;
   min-height: 100vh;
-  color: $primaryTextColor;
   overflow-x: hidden;
+  color: $primaryTextColor;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,8 +25,8 @@ body {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   box-sizing: border-box;
+  font-size: $core;
 }
 
 a {
@@ -39,4 +41,11 @@ ul {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@media only screen and (min-width: 3840px) {
+  body,
+  html {
+    font-size: $font-mediumXXL;
+  }
 }

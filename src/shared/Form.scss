@@ -6,15 +6,12 @@
   color: $primaryTextColor;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 5vw;
   width: 90vw;
-  top: 15vh;
   padding: 4vh 5vw;
-  margin-bottom: 10vh;
+  margin: 5vh auto;
   .form__header {
-    font-size: 20px;
-    margin-bottom: 50px;
+    font-size: $font-smallXL;
+    margin: 30px 0 40px;
   }
   .form__mainErrorHandler {
     @include errorText;
@@ -28,11 +25,10 @@
   }
   .form__button {
     @include button;
-    padding: 8px;
+    background-color: $primaryColor;
     margin-top: 3vh;
     width: 40%;
     align-self: flex-end;
-    background-color: $primaryColor;
   }
 }
 
@@ -61,6 +57,13 @@
   .form {
     right: 35vw;
     width: 30vw;
+    .form__header {
+      font-size: $font-smallXXL;
+      margin: 30px 0 40px;
+    }
+    .form__input {
+      font-size: $font-smallXL;
+    }
   }
 }
 
@@ -68,5 +71,24 @@
   .form {
     right: 35vw;
     width: 30vw;
+    .form__header {
+      font-size: $font-smallXXL;
+      margin: 30px 0 40px;
+    }
+  }
+}
+
+@media only screen and (min-width: 3840px) and (orientation: landscape) {
+  .form {
+    right: 35vw;
+    width: 30vw;
+    .form__header {
+      font-size: $font-smallXXL;
+      margin: 30px 0 40px;
+    }
+    .form__input {
+      padding: 4px;
+      font-size: $font-small;
+    }
   }
 }

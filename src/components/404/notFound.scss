@@ -1,8 +1,9 @@
 @import '../../shared/mixins.scss';
+@import '../../shared/variables.scss';
 
 .page-not-found {
+  @include flexCenter;
+  font-size: $font-smallXXL;
   width: 100vw;
   height: 100vh;
-  @include flexCenter;
-  font-size: 1.8rem;
 }

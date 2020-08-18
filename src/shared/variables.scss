@@ -1,4 +1,43 @@
+// colors
+
 $primaryColor: #f1ad3e;
 $primaryTextColor: rgb(70, 70, 70);
 $secondaryGray: rgb(205, 205, 205);
-$formErrorText: rgb(173, 0, 0);
+$formErrorColor: rgb(173, 0, 0);
+$validDescriptionColor: rgb(0, 107, 0);
+
+//font sizes
+
+$core: 16px;
+
+$font-mini: 0.9rem;
+$font-miniXL: 1rem;
+$font-small: 1.1rem;
+$font-smallXL: 1.25rem;
+$font-smallXXL: 1.5rem;
+$font-medium: 1.6rem;
+$font-mediumXL: 1.7rem;
+$font-mediumXXL: 2rem;
+$font-large: 2.4rem;
+$font-largeXL: 2.9rem;
+$font-largeXXL: 3.2rem;
+$font-huge: 3.5rem;
+
+//borders
+
+$primaryBorderBottom: 5px solid darken($secondaryGray, 10);
+$noticeCardWrapperBorderBottom: 10px solid lighten($primaryColor, 10);
+$headerBorder: 2px solid lighten($primaryTextColor, 70);
+
+// line-heights
+
+$lh-small: 150%;
+$lh-medium: 200%;
+$lh-large: 250%;
+
+// notices width
+
+$notice-small: 23%;
+$notice-medium: 30%;
+$notice-large: 45%;
+$notice-normal: 100%;

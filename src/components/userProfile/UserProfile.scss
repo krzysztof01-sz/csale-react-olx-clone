@@ -1,145 +1,138 @@
 @import '../../shared/variables.scss';
+@import '../../shared/mixins.scss';
 
 .userProfile__wrapper {
   width: 90%;
-  margin: 30vw auto 0;
+  margin: 10vh auto 0;
   .userProfile__greeting {
-    font-size: 1.5rem;
-    margin: 20vh 0 5vh;
+    font-size: $font-smallXXL;
+    margin: 5vh 0;
   }
   .userProfile__userData {
-    .userProfile__userInfo {
-      line-height: 150%;
-      background-color: lighten($secondaryGray, 10);
-      border-bottom: 5px solid $secondaryGray;
-      padding: 5vw;
-      margin-bottom: 15vh;
+    .userProfile__userInfo-list {
+      line-height: $lh-medium;
+      border-bottom: $primaryBorderBottom;
+      width: 100%;
+      padding: 5vh 1vw;
+      margin-bottom: 10vh;
     }
-  }
-  .userProfile__notices-header {
-    font-size: 1.2rem;
-    margin-bottom: 5vh;
-  }
-  .userNoticeThumbnails {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    .userProfile__notices-header {
+      font-size: $font-smallXL;
+      margin-bottom: 5vh;
+    }
+    .userProfile__notices-thumbnails {
+      @include flexCenter;
+      width: 95%;
+      margin: 0 auto;
+      flex-flow: column wrap;
+      justify-content: space-between;
+
+      .noticesStatus {
+        @include noticesStatus;
+      }
+    }
   }
 }
 
-@media only screen and (min-width: 500px) and (max-width: 999px) {
+@media only screen and (min-width: 600px) and (max-width: 999px) {
   .userProfile__wrapper {
-    margin-top: 20vh;
-    .userNoticeThumbnails {
-      width: 70%;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .userProfile__userData {
+      .userProfile__userInfo-list {
+        line-height: $lh-medium;
+        background: #fff;
+        width: 75%;
+        padding: 5vh 1vw;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .userProfile__wrapper {
+    .userProfile__userData {
+      .userProfile__userInfo-list {
+        width: 50%;
+      }
+      .userProfile__notices-thumbnails {
+        flex-direction: row;
+      }
     }
   }
 }
 
 @media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
   .userProfile__wrapper {
-    width: 90%;
-    margin: 10vw auto 0;
     .userProfile__greeting {
-      font-size: 1.5rem;
-      margin: 20vh 0 5vh;
-    }
-    .userProfile__userData {
-      .userProfile__userInfo {
-        line-height: 150%;
-        background-color: lighten($secondaryGray, 15);
-        border-bottom: 5px solid $secondaryGray;
-        padding: 3vw;
-        font-size: 1.2rem;
-        margin-bottom: 15vh;
-      }
-    }
-    .userProfile__notices-header {
-      font-size: 1.2rem;
-      margin-bottom: 5vh;
-    }
-    .userNoticeThumbnails {
-      width: 90vw;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      font-size: $font-smallXXL;
     }
   }
 }
 
 @media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
   .userProfile__wrapper {
-    width: 90%;
-    margin: 10vw auto 0;
     .userProfile__greeting {
-      font-size: 1.8rem;
-      margin: 20vh 0 5vh;
+      font-size: $font-mediumXL;
     }
     .userProfile__userData {
-      .userProfile__userInfo {
-        line-height: 180%;
-        background-color: lighten($secondaryGray, 10);
-        border-bottom: 5px solid $secondaryGray;
-        padding: 2vw;
-        font-size: 1.3rem;
-        margin-bottom: 15vh;
+      .userProfile__userInfo-list {
+        font-size: $font-smallXL;
       }
-    }
-    .userProfile__notices-header {
-      font-size: 1.4rem;
-      margin-bottom: 5vh;
-    }
-    .userNoticeThumbnails {
-      width: 90vw;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      .userProfile__notices-header {
+        font-size: $font-smallXXL;
+      }
     }
   }
 }
 
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
   .userProfile__wrapper {
-    width: 90%;
-    margin: 10vw auto 0;
     .userProfile__greeting {
-      font-size: 1.8rem;
-      margin: 20vh 0 5vh;
+      font-size: $font-mediumXXL;
     }
     .userProfile__userData {
-      .userProfile__userInfo {
-        line-height: 150%;
-        background-color: lighten($secondaryGray, 10);
-        border-bottom: 5px solid $secondaryGray;
-        padding: 2vw;
-        font-size: 1.2rem;
-        margin-bottom: 15vh;
+      .userProfile__userInfo-list {
+        font-size: $font-smallXXL;
+      }
+      .userProfile__notices-header {
+        font-size: $font-smallXXL;
       }
     }
-    .userProfile__notices-header {
-      font-size: 1.4rem;
-      margin-bottom: 5vh;
+  }
+}
+
+@media only screen and (min-width: 3840px) and (orientation: landscape) {
+  .userProfile__wrapper {
+    width: 90%;
+    margin: 5vw auto 0;
+    .userProfile__greeting {
+      font-size: $font-smallXXL;
+      margin: 5vh 0;
     }
-    .userNoticeThumbnails {
-      width: 90vw;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+    .userProfile__userData {
+      .userProfile__userInfo-list {
+        & li {
+          font-size: $font-smallXL;
+        }
+        width: 100%;
+        padding: 5vh 1vw;
+        line-height: $lh-medium;
+        border-bottom: $primaryBorderBottom;
+        margin-bottom: 10vh;
+      }
+      .userProfile__notices-header {
+        font-size: $font-smallXL;
+        margin-bottom: 5vh;
+      }
+      .userProfile__notices-thumbnails {
+        width: 95%;
+        margin: 0 auto;
+        @include flexCenter;
+        justify-content: space-between;
+
+        .noticesStatus {
+          @include noticesStatus;
+        }
+      }
     }
   }
 }

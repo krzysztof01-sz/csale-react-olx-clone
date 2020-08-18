@@ -24,12 +24,14 @@
   .userNoticeThumbnail__button,
   .userNoticeThumbnail__button-gray {
     width: 35%;
+    font-size: $font-smallXL;
   }
 }
 
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
   .userNoticeThumbnail__button,
   .userNoticeThumbnail__button-gray {
-    width: 30%;
+    width: 35%;
+    font-size: $font-smallXL;
   }
 }

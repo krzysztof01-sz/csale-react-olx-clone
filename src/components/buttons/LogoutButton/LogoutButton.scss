@@ -4,13 +4,13 @@
 .header__logout {
   @include button;
   background-color: $primaryColor;
-  font-size: 16px;
+  font-size: $font-miniXL;
   margin-right: 5vw;
 }
 
 @media only screen and (min-width: 1367px) and (orientation: landscape) {
   .header__logout {
-    font-size: 1.3rem;
+    font-size: $font-smallXL;
     width: 110px;
     padding: 10px;
   }
@@ -18,7 +18,7 @@
 
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
   .header__logout {
-    font-size: 1.4rem;
+    font-size: $font-smallXXL;
     width: 120px;
     padding: 15px;
   }

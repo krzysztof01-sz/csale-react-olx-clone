@@ -1,43 +1,60 @@
-@import '../../shared/mixins.scss';
 @import '../../shared/variables.scss';
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  background-color: white;
-  border-bottom: 2px solid lighten($primaryTextColor, 70);
+@mixin headerElementPosition {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  @include headerElementPosition;
+  border-bottom: $headerBorder;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-direction: row;
   width: 100vw;
   height: 10vh;
+  background-color: white;
   .header__options-wrapper {
+    @include headerElementPosition;
     width: 55vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
   }
-  .header__appName {
-    margin: 2vh 0 2vh 5vw;
-    font-size: 28px;
+  a {
+    text-decoration: none;
+    .header__appName {
+      margin: 2vh 0 2vh 5vw;
+      font-size: $font-mediumXL;
+    }
   }
 }
 
 @media only screen and (min-width: 1000px) and (max-width: 1920px) and (orientation: landscape) {
   .header {
     .header__options-wrapper {
-      width: 20vw;
-      display: flex;
+      @include headerElementPosition;
+      width: 25vw;
       flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
     }
-    .header__appName {
-      font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
+  .header {
+    a {
+      .header__appName {
+        font-size: $font-mediumXXL;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
+  .header {
+    a {
+      .header__appName {
+        font-size: $font-large;
+      }
     }
   }
 }
@@ -47,8 +64,10 @@
     .header__options-wrapper {
       width: 20vw;
     }
-    .header__appName {
-      font-size: 40px;
+    a {
+      .header__appName {
+        font-size: $font-large;
+      }
     }
   }
 }
