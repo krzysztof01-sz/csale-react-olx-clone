@@ -1,32 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import Header from '../../shared/header/Header';
 import NoticeCardPresenter from './NoticeCardPresenter';
+import { renderNoticeCondition } from '../../utils/utilsFunctions';
+import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
 
-const NoticeCard = props => {
-  window.scrollTo(0, 0);
-
-  const brightStarColor = '#f1ad3e';
-  const dimStarColor = '#cdcdcd';
-  const maxProductCondition = 5;
-
-  const renderNoticeCondition = noticeCondition => {
-    const renderOrder = [];
-
-    for (let i = 1; i <= maxProductCondition; i++) {
-      i <= noticeCondition ? renderOrder.push(brightStarColor) : renderOrder.push(dimStarColor);
-    }
-    return renderOrder;
-  };
-
-  const noticeId = useParams().id;
-  const { products } = props;
+const NoticeCard = ({ products }) => {
+  useEffect(() => window.scrollTo(0, 0), []);
+  const { id } = useParams();
 
   if (products !== undefined) {
-    const [product] = products.filter(prod => prod.id === noticeId);
+    const [product] = products.filter(prod => prod.id === id);
     const productCondition = renderNoticeCondition(product.productCondition);
     return (
       <>
@@ -35,7 +22,7 @@ const NoticeCard = props => {
       </>
     );
   } else {
-    return <div>There is no notices</div>;
+    return <LackOfNoticesMessage text="There is no notices." />;
   }
 };
 

@@ -1,34 +1,28 @@
 import React, { Suspense } from 'react';
 import './NoticeCard.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { v1 } from 'uuid';
-import './NoticeCard.scss';
 import AppLoader from '../loader/Loader';
+import AuthorInfo from './AuthorInfo/AuthorInfo';
+import NoticeCardInfo from './NoticeCardInfo/NoticeCardInfo';
+import { connect } from 'react-redux';
 
-const NoticeCardPresenter = ({ notice, productCondition }) => {
+const NoticeCardPresenter = ({ notice, productCondition, userInfo }) => {
   return (
     <>
       <section className="noticeCard__wrapper">
         <Suspense fallback={<AppLoader />}>
           <img alt="Notice" className="noticeCard__photo" src={notice.productPhoto} />
         </Suspense>
-        <div className="noticeCard__name">
-          {notice.productName} - {notice.productPrice}$
-        </div>
-        <div className="noticeCard__description">
-          Description: <br /> {notice.productDescription}
-        </div>
-        <div className="noticeCard__condition">
-          Condition: {notice.productCondition}{' '}
-          {productCondition.map(starColor => {
-            return <FontAwesomeIcon key={v1()} icon={faStar} color={starColor} />;
-          })}
-        </div>
+        <NoticeCardInfo notice={notice} noticeCondition={productCondition} />
+        <AuthorInfo userInfo={userInfo} />
       </section>
-      <aside className="authorInfo">User information</aside>
     </>
   );
 };
 
-export default NoticeCardPresenter;
+const mapStateToProps = state => {
+  return {
+    userInfo: state.firebase.profile,
+  };
+};
+
+export default connect(mapStateToProps)(NoticeCardPresenter);

@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Header from '../../shared/header/Header';
 import AppLoader from '../loader/Loader';
 import DashboardPresenter from './DashboardPresenter';
+import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
 
-const Dashboard = props => {
-  const { notices } = props;
+const Dashboard = ({ notices }) => {
+  useEffect(() => window.scrollTo(0, 0), []);
 
   if (notices?.length > 0) {
     return (
@@ -20,7 +21,7 @@ const Dashboard = props => {
     return (
       <>
         <Header />
-        <div style={{ marginTop: 100 }}>Nie ma ogłoszeń!</div>
+        <LackOfNoticesMessage text="There is no notices." />
       </>
     );
   } else {

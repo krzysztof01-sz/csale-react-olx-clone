@@ -3,6 +3,7 @@ import './DashboardNotice.scss';
 import { Link } from 'react-router-dom';
 import AppLoader from '../../loader/Loader';
 import DashboardNoticeImage from './DashboardNoticeImage';
+import { formatDate } from '../../../utils/utilsFunctions';
 
 const DashboardNotice = ({ notice }) => {
   return (
@@ -13,7 +14,10 @@ const DashboardNotice = ({ notice }) => {
         </Suspense>
         <h2 className="dashboardNotice__name">{notice.productName} </h2>
         <p className="dashboardNotice__description">{notice.productDescription}</p>
-        <span className="dashboardNotice__price">{notice.productPrice} $</span>
+        <div className="dashboardNotice__bottomWrapper">
+          <span className="bottomWrapper__creationDate">{formatDate(notice.creationDate)} $</span>
+          <span className="bottomWrapper-productPrice">{notice.productPrice} $</span>
+        </div>
       </article>
     </Link>
   );

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RegistrationPresenter from './RegistrationPresenter';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
 const Registration = () => {
+  useEffect(() => window.scrollTo(0, 0), []);
   const [error, setError] = useState('');
 
   const signUp = async ({ email, password, nick }) => {

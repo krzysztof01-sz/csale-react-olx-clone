@@ -27,6 +27,8 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (urlId) {
       async function fetchData() {
         await firebase
@@ -78,7 +80,7 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
             .required('This field is required.'),
           productPrice: Yup.number()
             .min(0, `Product's price must be at least 0 dollars`)
-            .max(20, 'The maximum is 20 dollars')
+            .max(10000, 'The maximum is 10000 dollars')
             .required('This field urlId required.'),
           productCondition: Yup.number()
             .min(1, `Product's condition must be at least 1-5`)
@@ -107,7 +109,7 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
                 </div>
 
                 <label htmlFor="productPrice">Price ($)</label>
-                <Field className="form__input" name="productPrice" type="number" min="0" max="20" step="1" />
+                <Field className="form__input" name="productPrice" type="number" min="0" max="10000" step="1" />
                 <div className="form__errorHandler">
                   <ErrorMessage name="productPrice" />
                 </div>

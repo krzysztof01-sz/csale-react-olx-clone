@@ -1,29 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './UserProfile.scss';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import Header from '../../shared/header/Header';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import NoticeThumbnail from './NoticeThumbnail/NoticeThumbnail';
 import { v1 } from 'uuid';
+import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
+import { formatDate } from '../../utils/utilsFunctions';
 
-const UserProfile = props => {
-  const { userMoney, userNick, userCreatedAt, userEmail, allNotices, userUid } = props;
-
-  const date = moment(Number(userCreatedAt)).calendar();
-  const formattedDate = String(date).replace(/["/"]/g, '.');
+const UserProfile = ({ userMoney, userNick, userCreatedAt, userEmail, allNotices, userUid }) => {
+  useEffect(() => window.scrollTo(0, 0), []);
 
   const renderUserNotices = () => {
     if (allNotices) {
       const userNotices = allNotices.filter(notice => notice.createdBy === userUid);
       if (userNotices.length === 0) {
-        return <div>You don't have any notices.</div>;
+        return <LackOfNoticesMessage text="You don't have any notices." />;
       }
       const notices = userNotices.map(notice => <NoticeThumbnail key={v1()} notice={notice} />);
       return notices;
     } else {
-      return <div>Csale haven't got any notices. Create the first notice</div>;
+      return <LackOfNoticesMessage text="Csale haven't got any notices. Create the first notice" />;
     }
   };
 
@@ -33,13 +31,13 @@ const UserProfile = props => {
       <section className="userProfile__wrapper">
         <h1 className="userProfile__greeting">Hello, {userNick}!</h1>
         <article className="userProfile__userData">
-          <ul className="userProfile__userInfo">
+          <ul className="userProfile__userInfo-list">
             <li>Money: {userMoney}$</li>
             <li>Email: {userEmail}</li>
-            <li>Created: {formattedDate}</li>
+            <li>Created: {formatDate(userCreatedAt)}</li>
           </ul>
           <h2 className="userProfile__notices-header">Your notices:</h2>
-          <ul className="userNoticeThumbnails">{renderUserNotices()}</ul>
+          <ul className="userProfile__notices-thumbnails">{renderUserNotices()}</ul>
         </article>
       </section>
     </>
