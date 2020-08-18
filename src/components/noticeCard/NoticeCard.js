@@ -21,9 +21,7 @@ const NoticeCard = ({ products }) => {
         <NoticeCardPresenter productCondition={productCondition} notice={product} />
       </>
     );
-  } else {
-    return <LackOfNoticesMessage text="There is no notices." />;
-  }
+  } else return <LackOfNoticesMessage text="There is no notices." />;
 };
 
 const mapStateToProps = state => {

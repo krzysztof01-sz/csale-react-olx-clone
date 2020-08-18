@@ -3,7 +3,7 @@
 
 .userNoticeThumbnail {
   width: $notice-normal;
-  margin-bottom: 10vh;
+  margin: 0 auto 10vh;
   .userNoticeThumbnail__photo {
     @include appPhoto;
   }
@@ -26,6 +26,7 @@
 @media only screen and (min-width: 600px) and (max-width: 999px) {
   .userNoticeThumbnail {
     @include notice-margin(0, 5%, 10vh);
+    @include notice-margin(2vw, 2%, 10vh);
     width: 80%;
     .userNoticeThumbnail__photo {
       @include appPhoto;
@@ -36,15 +37,17 @@
 
 @media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
   .userNoticeThumbnail {
-    width: $notice-large;
+    width: $notice-medium;
+    @include notice-margin(2vw, 2%, 10vh);
     .userNoticeThumbnail__photo {
       @include appPhoto;
     }
   }
 }
 
-@media only screen and (min-width: 1367px) and (max-width: 1920px) and (orientation: landscape) {
+@media only screen and (min-width: 1367px) and (max-width: 1919px) and (orientation: landscape) {
   .userNoticeThumbnail {
+    @include notice-margin(2vw, 2%, 10vh);
     width: $notice-medium;
     .userNoticeThumbnail__photo {
       @include appPhoto;
@@ -56,8 +59,9 @@
   }
 }
 
-@media only screen and (min-width: 1921px) and (orientation: landscape) {
+@media only screen and (min-width: 1920px) and (orientation: landscape) {
   .userNoticeThumbnail {
+    @include notice-margin(2vw, 2%, 10vh);
     width: $notice-small;
     .userNoticeThumbnail__photo {
       @include appPhoto;

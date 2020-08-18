@@ -25,7 +25,7 @@
       width: 95%;
       margin: 0 auto;
       flex-flow: column wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
 
       .noticesStatus {
         @include noticesStatus;
@@ -91,7 +91,10 @@
     }
     .userProfile__userData {
       .userProfile__userInfo-list {
-        font-size: $font-smallXXL;
+        & li {
+          font-size: $font-smallXL;
+          line-height: $lh-large;
+        }
       }
       .userProfile__notices-header {
         font-size: $font-smallXXL;

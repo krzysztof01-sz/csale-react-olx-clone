@@ -4,7 +4,7 @@ import Header from '../../shared/header/Header';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 
-const LoginPresenter = ({ loginUser, error }) => {
+const LoginPresenter = ({ loginUser, error, status }) => {
   return (
     <Formik
       initialValues={{
@@ -35,6 +35,7 @@ const LoginPresenter = ({ loginUser, error }) => {
               <ErrorMessage name="password" />
             </div>
 
+            {status}
             <button className="form__button" type="submit">
               Login
             </button>

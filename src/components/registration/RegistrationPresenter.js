@@ -4,7 +4,7 @@ import '../../shared/Form.scss';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 
-const RegistrationPresenter = ({ signUp, error }) => {
+const RegistrationPresenter = ({ signUp, error, status }) => {
   return (
     <Formik
       initialValues={{
@@ -56,6 +56,7 @@ const RegistrationPresenter = ({ signUp, error }) => {
               <ErrorMessage name="repeatedPassword" />
             </div>
 
+            {status}
             <button className="form__button" type="submit">
               Sign up
             </button>

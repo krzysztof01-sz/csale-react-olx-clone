@@ -55,8 +55,9 @@
 @media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
   .dashboardNotice__link {
     .dashboardNotice {
-      width: $notice-medium;
+      width: $notice-large;
       @include notice-padding(5vh, 2vw);
+      @include notice-margin(2vw, 2%, 10vh);
       .dashboardNotice__name {
         font-size: $font-smallXL;
       }
@@ -73,6 +74,7 @@
     .dashboardNotice {
       width: $notice-medium;
       @include notice-padding(3%, 1.5%);
+      @include notice-margin(2vw, 2%, 10vh);
       .dashboardNotice__name {
         font-size: $font-smallXL;
       }
@@ -97,6 +99,7 @@
     .dashboardNotice {
       width: $notice-small;
       @include notice-padding(3%, 1.5%);
+      @include notice-margin(2vw, 2%, 10vh);
       .dashboardNotice__description {
         font-size: $font-small;
       }

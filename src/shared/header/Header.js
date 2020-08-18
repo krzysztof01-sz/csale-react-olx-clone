@@ -2,8 +2,8 @@ import React from 'react';
 import './Header.scss';
 import LogoutButton from '../../components/buttons/LogoutButton/LogoutButton.js';
 import { connect } from 'react-redux';
-import AddNoticeButton from '../../components/buttons/AddNoticeButton/AddNoticeButton';
-import UserProfileButton from '../../components/buttons/UserProfileButton/UserProfileButton';
+import AddNoticeButton from '../../components/buttons/AddNoticeButton';
+import UserProfileButton from '../../components/buttons/UserProfileButton';
 import HeaderPresenter from './HeaderPresenter';
 
 const Header = ({ isProfileLoaded, userNick, loggedUser }) => {

@@ -20,7 +20,7 @@
   }
   .dashboard__notices {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-flow: column wrap;
     padding: 2vw;
   }

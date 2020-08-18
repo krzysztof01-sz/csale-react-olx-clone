@@ -10,23 +10,20 @@ import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
 const Dashboard = ({ notices }) => {
   useEffect(() => window.scrollTo(0, 0), []);
 
-  if (notices?.length > 0) {
-    return (
-      <>
-        <Header />
-        <DashboardPresenter notices={notices} />
-      </>
-    );
-  } else if (notices?.length === 0) {
-    return (
-      <>
-        <Header />
-        <LackOfNoticesMessage text="There is no notices." />
-      </>
-    );
-  } else {
-    return <AppLoader />;
-  }
+  const renderDashboard = () => {
+    if (notices?.length > 0) {
+      return <DashboardPresenter notices={notices} />;
+    } else if (notices?.length === 0) {
+      return <LackOfNoticesMessage text="There is no notices." />;
+    } else return <AppLoader />;
+  };
+
+  return (
+    <>
+      <Header />
+      {renderDashboard()}
+    </>
+  );
 };
 
 const mapStateToProps = state => {

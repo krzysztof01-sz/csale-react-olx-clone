@@ -7,15 +7,18 @@ const Login = () => {
   useEffect(() => window.scrollTo(0, 0), []);
 
   const [error, setError] = useState('');
+  const [status, setStatus] = useState('');
   const login = ({ email, password }) => {
+    setStatus('Logging...');
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(({ message }) => {
         setError(message);
+        setStatus('');
       });
   };
-  return <LoginPresenter loginUser={login} error={error} />;
+  return <LoginPresenter status={status} loginUser={login} error={error} />;
 };
 
 export default Login;
