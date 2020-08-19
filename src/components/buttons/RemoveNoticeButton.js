@@ -5,14 +5,14 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
 
-const RemoveNoticeButton = ({ sharedId }) => {
+const RemoveNoticeButton = ({ id }) => {
   const [error, setError] = useState('');
   const deleteNotice = async () => {
     if (window.confirm('The notice will be deleted. Are you sure?')) {
-      await firebase.firestore().collection('notices').doc(sharedId).delete();
+      await firebase.firestore().collection('notices').doc(id).delete();
       await firebase
         .storage()
-        .ref(`notices/${sharedId}`)
+        .ref(`notices/${id}`)
         .delete()
         .catch(err => setError(err.message));
     } else return false;

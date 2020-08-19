@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import './UserProfile.scss';
 import { connect } from 'react-redux';
-import Header from '../../shared/header/Header';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
 import NoticeThumbnail from './NoticeThumbnail/NoticeThumbnail';
 import { v1 } from 'uuid';
 import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
@@ -27,7 +24,6 @@ const UserProfile = ({ userMoney, userNick, userCreatedAt, userEmail, allNotices
 
   return (
     <>
-      <Header />
       <section className="userProfile__wrapper">
         <h1 className="userProfile__greeting">Hello, {userNick}!</h1>
         <article className="userProfile__userData">
@@ -55,4 +51,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default compose(firestoreConnect([{ collection: 'notices' }]), connect(mapStateToProps))(UserProfile);
+export default connect(mapStateToProps)(UserProfile);

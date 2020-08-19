@@ -5,7 +5,7 @@
 .splashScreen__wrapper {
   @include flexCenter;
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
 
   .splashScreen {
     .splashScreen__header {
@@ -148,7 +148,7 @@
     .splashScreen {
       .splashScreen__header {
         font-size: $font-largeXXL;
-        margin-bottom: 10vh;
+        margin-bottom: 8vh;
       }
       .splashScreen__imageWrapper {
         .splashScreen__slogan {
@@ -159,6 +159,7 @@
         }
       }
       .buttons {
+        width: 45vw;
         .splashScreen__button {
           width: 180px;
           padding: 12px;

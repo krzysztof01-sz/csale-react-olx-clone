@@ -1,63 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../shared/header/Header';
 import './AddNoticeForm.scss';
 import '../../shared/Form.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import DescriptionInput from './Components/DescriptionInput';
 import FileInput from './Components/FileInput';
-import WithFunctions from './Components/WithFunctions';
 import Button from './Components/Button';
 import { useHistory, useParams } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import AppLoader from '../loader/Loader';
+import WithExtraFunctions from './Components/WithExtraFunctions';
 
 const AddNoticeForm = ({ error, functions, ...statuses }) => {
   const history = useHistory();
-  const { id: urlId } = useParams();
+  const { id: noticeId } = useParams();
   const [modError, setModError] = useState('');
-  const [noticeToUpdate, setNoticeToUpdate] = useState({
+  const [primaryValues, setPrimaryValues] = useState({
     productName: '',
     productDescription: '',
     productPrice: 0,
     productCondition: 1,
-    productPhoto: null,
+    productPhoto: '',
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (urlId) {
-      async function fetchData() {
-        await firebase
-          .firestore()
-          .doc(`notices/${urlId}`)
-          .get()
-          .then(doc => setNoticeToUpdate(doc.data()));
+    async function getInitialValues() {
+      if (noticeId) {
+        const query = await firebase.firestore().doc(`notices/${noticeId}`).get();
+        setPrimaryValues({ ...query.data(), id: query.id });
+        return setLoading(false);
+      } else {
         setLoading(false);
+        return setPrimaryValues({
+          productName: '',
+          productDescription: '',
+          productPrice: 0,
+          productCondition: 1,
+          productPhoto: null,
+        });
       }
-      fetchData();
-    } else setLoading(false);
-  }, [urlId]);
+    }
+    getInitialValues();
+  }, [noticeId]);
 
   if (!loading) {
     return (
       <Formik
-        initialValues={noticeToUpdate}
+        initialValues={primaryValues}
+        enableReinitialize={true}
         onSubmit={async values => {
-          if (urlId) {
-            if (values === noticeToUpdate) {
+          if (noticeId) {
+            if (values === primaryValues) {
               setModError('No changes detected.');
               return false;
             } else {
               setModError('');
 
               if (typeof values.productPhoto === 'string') {
-                await functions.updateNoticeWithoutPhoto(values, noticeToUpdate.sharedId);
+                await functions.updateNoticeWithoutPhoto(values, primaryValues.id);
               } else {
-                await functions.updateNoticeWithPhoto(values, noticeToUpdate.sharedId);
+                await functions.updateNoticeWithPhoto(values, primaryValues.id);
               }
             }
           } else {
@@ -79,21 +85,23 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
             .max(500, `Product's description is too long.`)
             .required('This field is required.'),
           productPrice: Yup.number()
-            .min(0, `Product's price must be at least 0 dollars`)
-            .max(10000, 'The maximum is 10000 dollars')
-            .required('This field urlId required.'),
+            .min(0, `Product's price must be at least 0 dollars.`)
+            .max(10000, 'The maximum is 10000 dollars.')
+            .integer('You cannot enter a floating point number.')
+            .required('This field noticeId required.'),
           productCondition: Yup.number()
-            .min(1, `Product's condition must be at least 1-5`)
+            .min(1, `Product's condition must be at least 1-5.`)
             .max(5, 'You cannot type value greater than 5.')
+            .integer('You cannot enter a floating point number.')
             .required('This field is required.'),
           productPhoto: Yup.mixed().required('This field is required.'),
         })}>
-        {({ setFieldValue, values, handleSubmit, isSubmitting }) => {
+        {({ setFieldValue, values, handleSubmit }) => {
+          const { addingStatus, updatingStatus } = statuses;
           return (
             <div className="AddNoticeForm__wrapper">
-              <Header />
               <Form className="form" onSubmit={handleSubmit}>
-                <h1 className="form__header">{urlId ? 'Update notice' : 'New notice'}</h1>
+                <h1 className="form__header">{noticeId ? 'Update notice' : 'New notice'}</h1>
                 <span className="form__mainErrorHandler">{error}</span>
 
                 <label htmlFor="productName">Notice name</label>
@@ -126,7 +134,7 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
                 </div>
 
                 <div>{modError}</div>
-                <Button text={urlId ? 'Update' : 'Add notice'} isDisabled={isSubmitting} />
+                <Button text={noticeId ? 'Update' : 'Add notice'} isDisabled={addingStatus || updatingStatus} />
               </Form>
             </div>
           );
@@ -138,4 +146,4 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
   }
 };
 
-export default WithFunctions(AddNoticeForm);
+export default WithExtraFunctions(AddNoticeForm);

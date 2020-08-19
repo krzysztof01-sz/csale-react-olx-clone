@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../shared/Form.scss';
-import Header from '../../shared/header/Header';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 
@@ -17,7 +16,6 @@ const LoginPresenter = ({ loginUser, error, status }) => {
       })}
       onSubmit={values => loginUser(values)}>
       <>
-        <Header />
         <main>
           <Form className="form">
             <h1 className="form__header">Logging</h1>

@@ -17,9 +17,9 @@ const WithExtraFunctions = WrappedComponent => {
 
       this.setState(() => ({ addingStatus: true }));
 
-      const sharedId = v1();
-      const storageRef = firebase.storage().ref(`notices/${sharedId}`);
-      const firestoreRef = firebase.firestore().collection('notices').doc(sharedId);
+      const photoRefId = v1();
+      const storageRef = firebase.storage().ref(`notices/${photoRefId}`);
+      const firestoreRef = firebase.firestore().collection('notices').doc(photoRefId);
 
       await storageRef.put(data.productPhoto).catch(err => this.setState(() => ({ error: err.message })));
 
@@ -30,16 +30,16 @@ const WithExtraFunctions = WrappedComponent => {
         .set({
           ...data,
           creationDate,
-          sharedId,
+          photoRefId,
           productPhoto: photoURL,
           createdBy: firebase.auth().currentUser.uid,
         })
         .then(this.setState(() => ({ addingStatus: false })));
     };
 
-    updateNoticeWithoutPhoto = async (data, noticeToUpdateSharedId) => {
+    updateNoticeWithoutPhoto = async (data, id) => {
       this.setState(() => ({ updatingStatus: true }));
-      const firestoreRef = firebase.firestore().collection('notices').doc(noticeToUpdateSharedId);
+      const firestoreRef = firebase.firestore().collection('notices').doc(id);
       await firestoreRef
         .update({
           productName: data.productName,
@@ -50,10 +50,10 @@ const WithExtraFunctions = WrappedComponent => {
         .then(() => this.setState(() => ({ updatingStatus: false })));
     };
 
-    updateNoticeWithPhoto = async (data, noticeToUpdateSharedId) => {
+    updateNoticeWithPhoto = async (data, id) => {
       this.setState(() => ({ updatingStatus: true }));
-      const storageRef = firebase.storage().ref(`notices/${noticeToUpdateSharedId}`);
-      const firestoreRef = firebase.firestore().collection('notices').doc(noticeToUpdateSharedId);
+      const storageRef = firebase.storage().ref(`notices/${id}`);
+      const firestoreRef = firebase.firestore().collection('notices').doc(id);
 
       await storageRef.delete().catch(err => this.setState(() => ({ error: err.message })));
       await storageRef.put(data.productPhoto).catch(err => this.setState(() => ({ error: err.message })));

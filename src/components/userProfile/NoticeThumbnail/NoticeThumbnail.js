@@ -14,8 +14,8 @@ const NoticeThumbnail = ({ notice }) => {
         />
         <div className="userNoticeThumbnail__photo-label">{notice.productName}</div>
         <div className="userNoticeThumbnail__options">
-          <EditNoticeButton sharedId={notice.sharedId} />
-          <RemoveNoticeButton sharedId={notice.sharedId} />
+          <EditNoticeButton id={notice.id} />
+          <RemoveNoticeButton id={notice.id} />
         </div>
       </article>
     </li>

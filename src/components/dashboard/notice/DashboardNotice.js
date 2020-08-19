@@ -15,8 +15,8 @@ const DashboardNotice = ({ notice }) => {
         <h2 className="dashboardNotice__name">{notice.productName} </h2>
         <p className="dashboardNotice__description">{notice.productDescription}</p>
         <div className="dashboardNotice__bottomWrapper">
-          <span className="bottomWrapper__creationDate">{formatDate(notice.creationDate)} $</span>
-          <span className="bottomWrapper-productPrice">{notice.productPrice} $</span>
+          <span className="bottomWrapper__creationDate">{formatDate(notice.creationDate)}</span>
+          <span className="bottomWrapper-productPrice">{notice.productPrice}$</span>
         </div>
       </article>
     </Link>

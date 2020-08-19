@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
-import Header from '../../shared/header/Header';
 import AppLoader from '../loader/Loader';
 import DashboardPresenter from './DashboardPresenter';
 import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
@@ -18,19 +15,13 @@ const Dashboard = ({ notices }) => {
     } else return <AppLoader />;
   };
 
-  return (
-    <>
-      <Header />
-      {renderDashboard()}
-    </>
-  );
+  return renderDashboard();
 };
 
 const mapStateToProps = state => {
   return {
-    userProfile: state.firebase.profile,
     notices: state.firestore.ordered.notices,
   };
 };
 
-export default compose(firestoreConnect([{ collection: 'notices' }]), connect(mapStateToProps))(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
