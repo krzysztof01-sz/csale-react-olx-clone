@@ -2,14 +2,14 @@ import React, { memo } from 'react';
 import './SplashScreen.scss';
 import image from './splashScreenBg.svg';
 import { Link } from 'react-router-dom';
-import AppIcon from '../appIcon/AppIcon';
+import { BasketIcon } from '../icons/icons';
 
 const SplashScreen = () => {
   return (
     <div className="splashScreen__wrapper">
       <main className="splashScreen">
         <h1 className="splashScreen__header">
-          Csale <AppIcon />
+          Csale <BasketIcon />
         </h1>
         <div className="splashScreen__imageWrapper">
           <img className="splashScreen__image" src={image} alt="background color" />
