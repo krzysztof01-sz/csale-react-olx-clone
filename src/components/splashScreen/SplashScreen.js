@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import './SplashScreen.scss';
 import image from './splashScreenBg.svg';
 import { Link } from 'react-router-dom';
 import { BasketIcon } from '../icons/icons';
