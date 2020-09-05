@@ -3,28 +3,42 @@
 @mixin headerElementPosition {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header {
-  @include headerElementPosition;
+  max-width: 100vw;
+  padding: 0 2vw;
+  height: 10vh;
   border-bottom: $headerBorder;
   position: sticky;
   top: 0;
+  @include headerElementPosition;
   z-index: 1000;
+  background-color: $foundation;
   flex-direction: row;
-  width: 100vw;
-  height: 10vh;
-  background-color: white;
   .header__options-wrapper {
     @include headerElementPosition;
-    width: 55vw;
+    width: 35vw;
+    display: none;
   }
   a {
     text-decoration: none;
     .header__appName {
-      margin: 2vh 0 2vh 5vw;
+      width: 40vw;
+      margin: 2vh 0;
       font-size: $font-mediumXL;
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) and (orientation: landscape) {
+  .header {
+    .header__options-wrapper {
+      @include headerElementPosition;
+      width: 25vw;
+      flex-direction: row;
+      display: flex;
     }
   }
 }

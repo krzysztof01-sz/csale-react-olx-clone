@@ -2,7 +2,7 @@
 @import '../variables.scss';
 
 .headerIcon {
-  font-size: $font-mediumXXL;
+  font-size: $font-mediumXL;
   &:hover {
     cursor: pointer;
   }
@@ -16,6 +16,6 @@
 
 @media only screen and (min-width: 1921px) and (orientation: landscape) {
   .headerIcon {
-    font-size: $font-largeXL;
+    font-size: $font-largeXXL;
   }
 }
