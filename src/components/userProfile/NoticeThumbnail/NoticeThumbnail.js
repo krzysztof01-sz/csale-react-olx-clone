@@ -1,7 +1,6 @@
 import React from 'react';
 import RemoveNoticeButton from '../../buttons/RemoveNoticeButton';
 import EditNoticeButton from '../../buttons/EditNoticeButton';
-import './NoticeThumbnail.scss';
 
 const NoticeThumbnail = ({ notice }) => {
   return (
