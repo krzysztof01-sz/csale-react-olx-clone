@@ -1,5 +1,40 @@
+@import '../../shared/variables.scss';
 @import '../../shared/mixins.scss';
+
 .footer {
   width: 100vw;
-  height: 10vh;
+  padding: 2vh 0;
+  line-height: $lh-small;
+  text-align: center;
+  justify-content: space-around;
+  background-color: $foundation;
+  .footer__columnRight .footer__text,
+  .footer__columnLeft .footer__text {
+    font-size: $font-small;
+  }
+  .footer__columnRight .footer__text {
+    font-weight: bold;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1919px) and (orientation: landscape) {
+  .footer {
+    @include flexCenter;
+  }
+  .footer > * {
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 1920px) and (orientation: landscape) {
+  .footer {
+    @include flexCenter;
+    .footer__columnLeft .footer__text,
+    .footer__columnRight .footer__text {
+      font-size: $font-smallXL;
+    }
+  }
+  .footer > * {
+    margin: auto;
+  }
 }
