@@ -4,8 +4,8 @@
 
 .splashScreen__wrapper {
   @include flexCenter;
-  width: 100vw;
-  height: 85vh;
+  max-width: 100vw;
+  min-height: 90vh;
 
   .splashScreen {
     .splashScreen__header {
@@ -30,7 +30,7 @@
     }
     .buttons {
       width: 80vw;
-      margin: 0 auto;
+      margin: 0 auto 10vh;
       display: flex;
       justify-content: space-evenly;
 
