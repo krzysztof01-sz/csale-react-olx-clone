@@ -19,7 +19,7 @@ const Registration = () => {
         setError(message);
         setStatus('');
       });
-    await firebase.firestore().collection('users').doc(user.uid).set({ nick, money: 100 });
+    await firebase.firestore().collection('users').doc(user.uid).set({ nick, money: 100, email });
   };
 
   return <RegistrationPresenter status={status} signUp={signUp} error={error} />;
