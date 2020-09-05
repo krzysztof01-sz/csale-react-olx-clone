@@ -1,0 +1,76 @@
+@import '../../shared/mixins.scss';
+@import '../../shared/variables.scss';
+
+.about__wrapper {
+  width: 90vw;
+  margin: 0 auto;
+  .about__header {
+    position: relative;
+    font-size: $font-largeXL;
+    margin: 10vh 0;
+    z-index: 1;
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 15%;
+      height: 30px;
+      background-color: $primaryColor;
+      z-index: -1;
+      opacity: 0.6;
+    }
+  }
+  .about__paragraph {
+    font-size: $font-smallXL;
+    line-height: $lh-small;
+    margin-bottom: 10vh;
+  }
+  .about__list-label {
+    @extend .about__header;
+    font-size: $font-medium;
+    &::before {
+      bottom: -15px;
+    }
+  }
+  .about__section {
+    .about__list {
+      list-style-type: circle;
+      line-height: $lh-medium;
+      margin: 5vh 0;
+      a {
+        .about__list-item {
+          margin-bottom: 20px;
+          font-size: $font-smallXL;
+          text-decoration: underline;
+          list-style-type: none;
+        }
+        &:hover {
+          color: darken($primaryColor, 20);
+        }
+      }
+      .about__list-item {
+        list-style-type: circle;
+        margin-left: 20px;
+      }
+    }
+  }
+  .about__githubLink {
+    text-decoration: underline;
+  }
+}
+
+@media all and (min-width: 1920px) and (max-width: 2520px) {
+  .about__wrapper {
+    width: 80vw;
+    .about__paragraph {
+      font-size: $font-smallXXL;
+    }
+    .about__list {
+      .about__list-item {
+        font-size: $font-smallXL;
+      }
+    }
+  }
+}
