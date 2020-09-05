@@ -9,7 +9,7 @@
   @include userNoticeThumbnailButton;
   border-bottom: 3px solid $secondaryGray;
   &:hover {
-    background: linear-gradient(white 85%, $secondaryGray);
+    background: linear-gradient($foundation 85%, $secondaryGray);
   }
 }
 
