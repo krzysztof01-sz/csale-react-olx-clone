@@ -1,7 +1,5 @@
 import React from 'react';
-import './Dashboard.scss';
 import DashboardNotice from './notice/DashboardNotice';
-import { v1 } from 'uuid';
 
 const DashboardPresenter = ({ notices }) => {
   return (
@@ -9,7 +7,7 @@ const DashboardPresenter = ({ notices }) => {
       <header className="dashboard__header">Notices</header>
       <section className="dashboard__notices">
         {notices.map(singleNotice => (
-          <DashboardNotice key={v1()} notice={singleNotice} />
+          <DashboardNotice key={singleNotice.id} notice={singleNotice} />
         ))}
       </section>
     </div>
