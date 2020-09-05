@@ -1,5 +1,4 @@
 import React from 'react';
-import './Loader.scss';
 import Loader from 'react-loader-spinner';
 
 const AppLoader = () => {
