@@ -20,11 +20,12 @@
   color: black;
   cursor: pointer;
   width: 45%;
-  background: white;
+  background: $foundation;
+  color: $primaryTextColor;
   border-radius: 0;
-  border-bottom: 3px solid lighten($primaryColor, 20);
+  border-bottom: 3px solid $primaryColor;
   &:hover {
-    background: linear-gradient(white 85%, lighten($primaryColor, 20));
+    background: linear-gradient($foundation 85%, $primaryColor);
   }
 }
 
@@ -46,7 +47,7 @@
 
 @mixin button {
   background-color: $secondaryGray;
-  width: 100px;
+  width: 90px;
   padding: 8px;
   font-size: 1.1rem;
   border-radius: 5px;
@@ -72,14 +73,21 @@
 
 @mixin errorText {
   margin-bottom: 2vh;
-  color: $formErrorColor;
+  color: $invalidColor;
   font-weight: bold;
   text-align: center;
 }
 
 @mixin input {
+  background-color: lighten($foundation, 3);
+  color: $primaryTextColor;
   margin: 1vh 0 2vh;
   padding: 7px 5px;
-  border: 2px solid $primaryTextColor;
+  border: 2px solid $secondaryGray;
   border-radius: 4px;
+}
+
+@mixin setIconSize($width, $height) {
+  width: $width;
+  height: $height;
 }
