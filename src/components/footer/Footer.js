@@ -1,13 +1,18 @@
 import React from 'react';
-import './Footer.scss';
+
+const getYear = () => {
+  return new Date().getFullYear();
+};
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <h2>Csale</h2>
-      <span className="footer__text">Author: Krzysztof Szczepański</span>
-      <br />
-      <span className="footer__text">{new Date().getFullYear()} All Rights Reserved</span>
+      <div className="footer__columnLeft">
+        <div className="footer__text">Created by: Krzysztof Szczepański</div>
+      </div>
+      <div className="footer__columnRight">
+        <div className="footer__text">{getYear()} All Rights Reserved</div>
+      </div>
     </footer>
   );
 };
