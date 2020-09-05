@@ -5,5 +5,10 @@
 debug.log
 key.json
 package-lock.json
-ui-debul.log
+ui-debug.log
 yarn.lock
+gulpfile.js
+README.md
+/build
+firebase.json
+firebase-debug.log
