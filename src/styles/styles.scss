@@ -1,0 +1,33 @@
+//imports from main folder
+@import '../App.scss';
+
+// imports from shared folder
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
+@import '../shared/NoticeThumbnailButton.scss';
+@import '../shared/Form.scss';
+@import '../shared/header/HeaderIcon.scss';
+@import '../shared/header/Header.scss';
+
+//imports from userprofile
+@import '../components/userProfile/UserProfile.scss';
+@import '../components/userProfile/NoticeThumbnail/NoticeThumbnail.scss';
+
+// imports from splashscreen
+@import '../components/splashScreen/SplashScreen.scss';
+
+@import '../components/noticeCard/NoticeCard.scss';
+
+@import '../components/loader/Loader.scss';
+
+@import '../components/buttons/LogoutButton/LogoutButton.scss';
+@import '../components/buttons/OptionsIcon/OptionsIcon.scss';
+
+@import '../components/addNotice/AddNoticeForm.scss';
+@import '../components/aboutPage/AboutPage.scss';
+@import '../components/404/notFound.scss';
+
+@import '../components/dashboard/Dashboard.scss';
+@import '../components/dashboard/notice/DashboardNotice.scss';
+
+@import '../components/footer/Footer.scss';
