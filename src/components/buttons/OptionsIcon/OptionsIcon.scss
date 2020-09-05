@@ -1,0 +1,88 @@
+@import '../../../shared/mixins.scss';
+@import '../../../shared/variables.scss';
+
+.optionsIcon__wrapper {
+  position: relative;
+  overflow: hidden;
+  @include setIconSize(40px, 30vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 25vh 0 0 2vw;
+  .optionsIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-sizing: content-box;
+    top: 0;
+    left: 0;
+    @include setIconSize(30px, 30px);
+    background-color: $foundation;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    padding: 5px;
+    z-index: 20;
+    .optionsIcon__dot {
+      display: flex;
+      justify-content: center;
+      @include setIconSize(6px, 6px);
+      background-color: $secondaryGray;
+      border-radius: 50%;
+    }
+  }
+  .optionsIcon__options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: $foundation;
+    height: 150px;
+    margin-top: 20px;
+    padding: 0 7px;
+    opacity: 0;
+    z-index: 10;
+    .icon {
+      @include setIconSize(25px, 25px);
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: $foundation;
+    }
+  }
+  .opened {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s ease-in;
+
+    -webkit-transition: transform 0.5s, opacity 0.5s ease-in;
+    -moz-transition: transform 0.5s, opacity 0.5s ease-in;
+    -ms-transition: transform 0.5s, opacity 0.5s ease-in;
+    -o-transition: transform 0.5s, opacity 0.5s ease-in;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+  }
+
+  .closed {
+    transform: translateY(-150%);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s ease;
+    -webkit-transform: translateY(-150%);
+    -moz-transform: translateY(-150%);
+    -ms-transform: translateY(-150%);
+    -o-transform: translateY(-150%);
+    -webkit-transition: transform 0.5s, opacity 0.5s ease;
+    -moz-transition: transform 0.5s, opacity 0.5s ease;
+    -ms-transition: transform 0.5s, opacity 0.5s ease;
+    -o-transition: transform 0.5s, opacity 0.5s ease;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (orientation: landscape) {
+  .optionsIcon__wrapper {
+    display: none;
+  }
+}

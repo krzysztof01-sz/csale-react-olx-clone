@@ -1,5 +1,4 @@
 import React from 'react';
-import './LogoutButton.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 

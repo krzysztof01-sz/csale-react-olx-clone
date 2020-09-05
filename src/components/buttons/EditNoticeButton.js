@@ -1,6 +1,5 @@
 import React from 'react';
 import { EditIcon } from '../icons/icons';
-import '../../shared/NoticeThumbnailButton.scss';
 import { Link } from 'react-router-dom';
 
 const EditNoticeButton = ({ id }) => {
