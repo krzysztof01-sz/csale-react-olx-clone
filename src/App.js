@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.scss';
+import './styles/styles.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -15,11 +15,12 @@ import AddNoticeForm from './components/addNotice/AddNoticeForm';
 import UserProfile from './components/userProfile/UserProfile';
 import Header from './shared/header/Header';
 import Footer from './components/footer/Footer';
+import AboutPage from './components/AboutPage/AboutPage';
 
 const App = ({ isUserLogged }) => {
   return (
     <Router>
-      <Header />
+      <Header isUserLogged={isUserLogged} />
       <div className="App">
         <Switch>
           <Route exact path="/">
@@ -32,6 +33,7 @@ const App = ({ isUserLogged }) => {
           <Route path="/add">{isUserLogged ? <AddNoticeForm /> : <Redirect to="/login" />}</Route>
           <Route path="/profile">{isUserLogged ? <UserProfile /> : <Redirect to="/login" />}</Route>
           <Route path="/update/:id">{isUserLogged ? <AddNoticeForm /> : <Redirect to="/login" />}</Route>
+          <Route path="/about" component={AboutPage} />
           <Route component={notFound} />
         </Switch>
         <Footer />
