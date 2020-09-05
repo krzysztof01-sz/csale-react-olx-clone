@@ -27,7 +27,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       height: 5vh;
-      margin-bottom: 2vh;
+      margin: 2vh 0;
     }
     .dashboardNotice__bottomWrapper {
       @include cardBottomWrapper;
@@ -55,7 +55,7 @@
 @media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
   .dashboardNotice__link {
     .dashboardNotice {
-      width: $notice-large;
+      width: $notice-medium;
       @include notice-padding(5vh, 2vw);
       @include notice-margin(2vw, 2%, 10vh);
       .dashboardNotice__name {
