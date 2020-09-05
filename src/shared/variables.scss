@@ -1,10 +1,18 @@
 // colors
 
-$primaryColor: #f1ad3e;
-$primaryTextColor: rgb(70, 70, 70);
-$secondaryGray: rgb(205, 205, 205);
-$formErrorColor: rgb(173, 0, 0);
-$validDescriptionColor: rgb(0, 107, 0);
+// $foundation: rgb(253, 253, 253);
+// $primaryColor: #f1ad3e;
+// $primaryTextColor: rgb(70, 70, 70);
+// $secondaryGray: rgb(205, 205, 205);
+// $invalidColor: rgb(173, 0, 0);
+// $validColor: rgb(0, 107, 0);
+
+$foundation: rgb(36, 36, 36);
+$primaryColor: #dfa445;
+$primaryTextColor: rgb(235, 235, 235);
+$secondaryGray: rgb(68, 68, 68);
+$invalidColor: rgb(245, 63, 63);
+$validColor: rgb(53, 155, 53);
 
 //font sizes
 
@@ -27,7 +35,7 @@ $font-huge: 3.5rem;
 
 $primaryBorderBottom: 5px solid darken($secondaryGray, 10);
 $noticeCardWrapperBorderBottom: 10px solid lighten($primaryColor, 10);
-$headerBorder: 2px solid lighten($primaryTextColor, 70);
+$headerBorder: 2px solid darken($foundation, 2);
 
 // line-heights
 
@@ -39,5 +47,5 @@ $lh-large: 250%;
 
 $notice-small: 21%;
 $notice-medium: 29%;
-$notice-large: 45%;
+$notice-large: 48%;
 $notice-normal: 100%;
