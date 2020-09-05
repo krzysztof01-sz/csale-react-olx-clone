@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import './DashboardNotice.scss';
 import { Link } from 'react-router-dom';
 import AppLoader from '../../loader/Loader';
 import DashboardNoticeImage from './DashboardNoticeImage';
