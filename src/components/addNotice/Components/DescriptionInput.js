@@ -7,7 +7,7 @@ const DescriptionInput = props => {
   let validatedField = field.value === undefined ? '' : String(field.value).trim();
   return (
     <>
-      <textarea rows="5" className="form__productDescription" {...props}></textarea>
+      <textarea rows="5" className="form__productDescription form__input" {...props}></textarea>
       <WordCounter amountOfWords={validatedField.length} />
     </>
   );
