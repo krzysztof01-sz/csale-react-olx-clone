@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
-import './UserProfile.scss';
 import { connect } from 'react-redux';
 import NoticeThumbnail from './NoticeThumbnail/NoticeThumbnail';
-import { v1 } from 'uuid';
 import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
 import { formatDate } from '../../utils/utilsFunctions';
 
@@ -15,7 +13,7 @@ const UserProfile = ({ userMoney, userNick, userCreatedAt, userEmail, allNotices
       if (userNotices.length === 0) {
         return <LackOfNoticesMessage text="You don't have any notices." />;
       }
-      const notices = userNotices.map(notice => <NoticeThumbnail key={v1()} notice={notice} />);
+      const notices = userNotices.map(notice => <NoticeThumbnail key={notice.id} notice={notice} />);
       return notices;
     } else {
       return <LackOfNoticesMessage text="Csale haven't got any notices. Create the first notice" />;
