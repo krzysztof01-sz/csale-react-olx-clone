@@ -46,6 +46,7 @@ const WithExtraFunctions = WrappedComponent => {
           productDescription: data.productDescription,
           productCondition: data.productCondition,
           productPrice: data.productPrice,
+          productUsageState: data.productUsageState,
         })
         .then(() => this.setState(() => ({ updatingStatus: false })));
     };
@@ -67,6 +68,7 @@ const WithExtraFunctions = WrappedComponent => {
           productCondition: data.productCondition,
           productPrice: data.productPrice,
           productPhoto: photoURL,
+          productUsageState: data.productUsageState,
         })
         .then(() => this.setState(() => ({ updatingStatus: false })));
     };
