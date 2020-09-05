@@ -18,10 +18,8 @@ const Dashboard = ({ notices }) => {
   return renderDashboard();
 };
 
-const mapStateToProps = state => {
-  return {
-    notices: state.firestore.ordered.notices,
-  };
-};
+const mapStateToProps = state => ({
+  notices: state.firestore.ordered.notices,
+});
 
 export default connect(mapStateToProps)(Dashboard);
