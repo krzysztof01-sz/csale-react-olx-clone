@@ -1,13 +1,11 @@
 @import './shared/variables.scss';
 
 body {
-  margin: 0;
-  padding: 0;
-  border: 0;
   max-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
   color: $primaryTextColor;
+  background-color: $foundation;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,6 +17,19 @@ body {
 }
 ::selection {
   background: $primaryColor;
+}
+
+body::-webkit-scrollbar {
+  background: white;
+  padding: 1px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: $secondaryGray;
+}
+
+body::-webkit-scrollbar-track {
+  background: white;
 }
 
 * {
