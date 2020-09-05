@@ -17,7 +17,7 @@ $bb-small: 3vh;
   .noticeCard__noticeInfo {
     @include notice-margin(2vh, 0, 5vh);
     @include notice-padding(5vh, 4vw);
-    background-color: lighten($secondaryGray, 15);
+    background-color: darken($foundation, 3);
     .noticeCard__name {
       color: $primaryTextColor;
       font-size: $font-smallXL;
@@ -40,6 +40,17 @@ $bb-small: 3vh;
     }
     .noticeCard__condition {
       margin-bottom: $bb-small;
+    }
+    .noticeCard__usageState-used,
+    .noticeCard__usageState-original {
+      @extend .noticeCard__condition;
+      font-weight: bold;
+    }
+    .noticeCard__usageState-original {
+      color: lighten($validColor, 10);
+    }
+    .noticeCard__usageState-used {
+      color: lighten($invalidColor, 20);
     }
   }
   .authorInfo {
