@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './AddNoticeForm.scss';
-import '../../shared/Form.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import DescriptionInput from './Components/DescriptionInput';
@@ -22,6 +20,7 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
     productPrice: 0,
     productCondition: 1,
     productPhoto: '',
+    productUsageState: '',
   });
   const [loading, setLoading] = useState(true);
 
@@ -41,6 +40,7 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
           productPrice: 0,
           productCondition: 1,
           productPhoto: null,
+          productUsageState: '',
         });
       }
     }
@@ -95,6 +95,7 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
             .integer('You cannot enter a floating point number.')
             .required('This field is required.'),
           productPhoto: Yup.mixed().required('This field is required.'),
+          productUsageState: Yup.string().oneOf(['used', 'original']).required('This field is required.'),
         })}>
         {({ setFieldValue, values, handleSubmit }) => {
           const { addingStatus, updatingStatus } = statuses;
@@ -114,6 +115,21 @@ const AddNoticeForm = ({ error, functions, ...statuses }) => {
                 <Field as={DescriptionInput} name="productDescription" />
                 <div className="form__errorHandler">
                   <ErrorMessage name="productDescription" />
+                </div>
+
+                <span className="form__radios-label">State</span>
+                <div role="radiogroup" className="form__radios">
+                  <label className="form__radio">
+                    <Field className="form__radio-input" type="radio" name="productUsageState" value="original" />
+                    <span className="form__radio-label">Original</span>
+                  </label>
+                  <label className="form__radio">
+                    <Field className="form__radio-input" type="radio" name="productUsageState" value="used" />
+                    <span className="form__radio-label">Used</span>
+                  </label>
+                </div>
+                <div className="form__errorHandler">
+                  <ErrorMessage name="productUsageState" />
                 </div>
 
                 <label htmlFor="productPrice">Price ($)</label>
