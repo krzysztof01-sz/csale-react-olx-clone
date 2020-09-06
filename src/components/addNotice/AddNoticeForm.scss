@@ -25,7 +25,7 @@
     margin-bottom: 1vh;
   }
   .form__radios {
-    border: 2px solid $secondaryGray;
+    border: 2px solid var(--secondaryGray);
     border-radius: 4px;
     padding: 2vh;
     display: flex;
@@ -45,11 +45,11 @@
           width: 15px;
           height: 15px;
           border-radius: 50%;
-          border: 1px solid $secondaryGray;
+          border: 1px solid var(--secondaryGray);
         }
         &:checked + *::before {
-          background: radial-gradient($primaryColor 0%, $primaryColor 30%, transparent 50%, transparent);
-          border-color: $primaryColor;
+          background: radial-gradient(var(--primaryColor) 0%, var(--primaryColor) 30%, transparent 50%, transparent);
+          border-color: var(--primaryColor);
         }
       }
     }
@@ -63,7 +63,7 @@
     opacity: 0;
     position: absolute;
     & + .form__fileInput-label {
-      background-color: $secondaryGray;
+      background-color: var(--secondaryGray);
       margin-bottom: 2vh;
       padding: 10px 7px;
       border-radius: 5px;
@@ -88,12 +88,12 @@
     align-items: flex-end;
     position: relative;
     margin: 2vh 0;
-    border: 2px solid $secondaryGray;
+    border: 2px solid var(--secondaryGray);
     overflow: hidden;
     z-index: 90;
     .form__photoPreview-wrapper-icon {
       font-size: $font-smallXL;
-      color: $secondaryGray;
+      color: var(--secondaryGray);
       position: absolute;
       bottom: 10px;
       left: 10px;
@@ -112,7 +112,7 @@
       z-index: 100;
       bottom: 5px;
       right: 10px;
-      color: $secondaryGray;
+      color: var(--secondaryGray);
       font-size: $font-mediumXL;
     }
   }
@@ -122,7 +122,7 @@
   .form {
     .form__fileInput {
       & + .form__fileInput-label {
-        background-color: $secondaryGray;
+        background-color: var(--secondaryGray);
         margin-bottom: 2vh;
         padding: 14px 30px;
         border-radius: 5px;

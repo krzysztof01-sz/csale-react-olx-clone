@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import NoticeThumbnail from './NoticeThumbnail/NoticeThumbnail';
 import LackOfNoticesMessage from '../../shared/LackOfNoticesMessage';
 import { formatDate } from '../../utils/utilsFunctions';
+import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
 
 const UserProfile = ({ userMoney, userNick, userCreatedAt, userEmail, allNotices, userUid }) => {
   useEffect(() => window.scrollTo(0, 0), []);
@@ -24,6 +25,7 @@ const UserProfile = ({ userMoney, userNick, userCreatedAt, userEmail, allNotices
     <>
       <section className="userProfile__wrapper">
         <h1 className="userProfile__greeting">Hello, {userNick}!</h1>
+        <ThemeSwitcher />
         <article className="userProfile__userData">
           <ul className="userProfile__userInfo-list">
             <li>Money: {userMoney}$</li>
