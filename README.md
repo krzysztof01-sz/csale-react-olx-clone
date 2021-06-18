@@ -1,4 +1,19 @@
-Csale - online shopping platform created using React, Redux, Firebase technology stack.
+# Csale - online shopping platform created using React, Redux, Firebase technology stack.
+
+**Check the project live: [https://burza-idzie.web.app](https://burza-idzie.web.app/)**
+
+## Technology stack
+
+- React
+- Redux
+- Firebase
+- Formik
+- Yup
+- SASS
+
+## Screenshots
+
+![Dashboard](https://github.com/krzysztof01-sz/csale-react-olx-clone/tree/master/screenshots/csale-preview.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
